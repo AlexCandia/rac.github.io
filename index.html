@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Redes de Conmutación · UMSS</title>
+  <!-- Vincula el archivo de estilos CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO PRINCIPAL -->
+  <header>
+    <h1>📡 Redes de Conmutación</h1>
+    <p class="subtitulo">Resumen completo desde circuitos hasta ADSL — todo lo que necesitas saber.</p>
+  </header>
+
+  <!-- SISTEMA DE PESTAÑAS (TABS) -->
+  <div class="tabs-container">
+    <!-- Botones de navegación -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-intro">🌐 Introducción</button>
+      <button class="tab-btn" data-tab="tab-circuitos">📞 Circuitos</button>
+      <button class="tab-btn" data-tab="tab-paquetes">📦 Paquetes</button>
+      <button class="tab-btn" data-tab="tab-atm">⚛️ ATM</button>
+      <button class="tab-btn" data-tab="tab-frame">🖼️ Frame Relay</button>
+      <button class="tab-btn" data-tab="tab-extras">➕ Extras</button>
+    </div>
+
+    <!-- CONTENIDO DE LAS PESTAÑAS -->
+    <div class="tabs-content">
+
+      <!-- PESTAÑA: INTRODUCCIÓN -->
+      <div class="tab-panel active" id="tab-intro">
+        <h2>🌐 ¿Qué es la Conmutación?</h2>
+        <p>La <strong>conmutación</strong> es la conexión que realizan los nodos en distintos lugares y distancias para lograr un camino apropiado entre dos usuarios de una red de telecomunicaciones. Su objetivo principal es <strong>descongestionar</strong> la red, disminuir el tráfico y aumentar el ancho de banda disponible.</p>
+        
+        <div class="card-container">
+          <div class="card">
+            <h3>📜 Arquitecturas Básicas</h3>
+            <p>Existen dos grandes arquitecturas de comunicación:</p>
+            <ul>
+              <li><strong>🔌 Conmutación de Circuitos:</strong> Ideal para voz tradicional.</li>
+              <li><strong>📦 Conmutación de Paquetes:</strong> La base de Internet y redes modernas.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>📈 Evolución a Telefonía IP</h3>
+            <p>Las empresas migraron de la red telefónica tradicional (PSTN) a soluciones de <strong>Telefonía IP de extremo a extremo</strong>, integrando voz, video y datos sobre una misma red.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: CONMUTACIÓN DE CIRCUITOS -->
+      <div class="tab-panel" id="tab-circuitos">
+        <h2>🔌 Conmutación de Circuitos</h2>
+        <p>En este método, se establece un <strong>circuito físico dedicado</strong> y exclusivo entre los extremos que se mantiene durante toda la comunicación. Es el caso de la telefonía convencional.</p>
+
+        <div class="columns">
+          <div class="col ventajas">
+            <h3>✅ Ventajas</h3>
+            <ul>
+              <li><strong>Transmisión en tiempo real:</strong> Ideal para voz y video sin cortes.</li>
+              <li><strong>Sin contención:</strong> Una vez establecido, las partes se comunican a la máxima velocidad del medio.</li>
+              <li><strong>Circuito fijo:</strong> No hay que calcular rutas en cada nodo intermedio, lo que simplifica la gestión.</li>
+            </ul>
+          </div>
+          <div class="col desventajas">
+            <h3>❌ Desventajas</h3>
+            <ul>
+              <li><strong>Retraso inicial:</strong> Se necesita tiempo para establecer la conexión.</li>
+              <li><strong>Acaparamiento de recursos:</strong> El circuito se desperdicia en los silencios de la conversación.</li>
+              <li><strong>Poco tolerante a fallos:</strong> Si un nodo falla, todo el circuito se cae y hay que reconectarlo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: CONMUTACIÓN DE PAQUETES -->
+      <div class="tab-panel" id="tab-paquetes">
+        <h2>📦 Conmutación de Paquetes</h2>
+        <p>La información se divide en pequeños bloques llamados <strong>paquetes</strong>. Cada paquete contiene datos y una cabecera con direcciones de origen y destino. Los nodos los almacenan y reenvían dinámicamente. Es el método más usado hoy en día (ej. Internet).</p>
+        
+        <div class="card-container three">
+          <div class="card">
+            <h3>🔄 Modos</h3>
+            <p><strong>Circuito Virtual:</strong> Todos los paquetes siguen la misma ruta, asegurando el orden.</p>
+            <p><strong>Datagrama:</strong> Cada paquete se encamina de forma independiente, pudiendo llegar en desorden.</p>
+          </div>
+          <div class="card">
+            <h3>✅ Ventajas Clave</h3>
+            <ul>
+              <li>Compartición de recursos entre usuarios.</li>
+              <li>Mayor flexibilidad y rentabilidad.</li>
+              <li>Si un paquete falla, solo se reenvía ese, no toda la información.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>❌ Desventajas</h3>
+            <ul>
+              <li>Mayor complejidad en los equipos de conmutación.</li>
+              <li>Posible duplicidad de paquetes por retransmisiones.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: REDES ATM -->
+      <div class="tab-panel" id="tab-atm">
+        <h2>⚛️ Redes ATM (Asynchronous Transfer Mode)</h2>
+        <p>Tecnología de red troncal de alta capacidad que transmite información en paquetes cortos de longitud constante llamados <strong>celdas</strong> (53 bytes). Usa canales y trayectos virtuales para enrutar. Soporta velocidades de 155 Mbps (OC-3) hasta casi 10 Gbps (OC-192).</p>
+        
+        <h3>📐 Modelo de Referencia ATM</h3>
+        <p>Se corresponde con la capa física y parte de la de enlace del modelo OSI. Se compone de planos (Control, Usuario, Gestión) y capas (Física, ATM, Adaptación AAL, Superiores).</p>
+        
+        <h3>🧱 Estructura de la Celda ATM</h3>
+        <p>Cada celda consta de 53 octetos: 5 de cabecera y 48 de datos (payload). Los formatos de cabecera son <strong>UNI</strong> (Usuario-Red) y <strong>NNI</strong> (Red-Red).</p>
+
+        <div class="table-responsive">
+          <table>
+            <thead><tr><th>Campo</th><th>Bits</th><th>Función Principal</th></tr></thead>
+            <tbody>
+              <tr><td>GFC</td><td>4</td><td>Control de Flujo Genérico (prácticamente no usado, extiende VPI en NNI).</td></tr>
+              <tr><td>VPI / VCI</td><td>8 / 16</td><td>Identificadores de Trayecto y Canal Virtual. Definen el enrutamiento.</td></tr>
+              <tr><td>PTI</td><td>3</td><td>Identifica el tipo de carga (datos de usuario o control) e indica congestión.</td></tr>
+              <tr><td>CLP</td><td>1</td><td>Prioridad de descarte en caso de congestión (Cell Loss Priority).</td></tr>
+              <tr><td>HEC</td><td>8</td><td>Corrección de errores de la cabecera.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: FRAME RELAY Y MÁS -->
+      <div class="tab-panel" id="tab-frame">
+        <h2>🖼️ Frame Relay</h2>
+        <p>Protocolo de enlace para WAN que usa paquetes de <strong>longitud variable</strong>. Simplifica el proceso de X.25 eliminando controles de error "salto a salto", aprovechando las modernas infraestructuras de baja tasa de error. Es orientado a conexión y define Circuitos Virtuales Permanentes (PVC). Soporta velocidades de hasta 2.048 Mbps (E1).</p>
+
+        <h3>📊 Comparativa con X.25</h3>
+        <div class="table-responsive">
+          <table>
+            <thead><tr><th>Característica</th><th>X.25</th><th>Frame Relay</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Época / Medio</strong></td><td>Líneas analógicas con alta tasa de error.</td><td>Infraestructura digital moderna y fiable.</td></tr>
+              <tr><td><strong>Control de Errores</strong></td><td>Abundante, entre cada nodo, lo que genera "overhead".</td><td>Mínimo, delegado a los extremos. Mayor eficiencia.</td></tr>
+              <tr><td><strong>Velocidad</strong></td><td>Baja, pensada para retransmisiones constantes.</td><td>Alta, para mayor flujo de información.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: EXTRAS (SMDS, ADSL) -->
+      <div class="tab-panel" id="tab-extras">
+        <h2>➕ Tecnologías Adicionales</h2>
+        <div class="card-container">
+          <div class="card">
+            <h3>🏙️ SMDS</h3>
+            <p>Servicio de datos conmutado multimegabits. Red metropolitana (MAN), sin conexión, de alta velocidad y basada en celdas de 53 bytes. Diseñada para interconectar LANs con velocidades DS-1, DS-3 y SONET.</p>
+          </div>
+          <div class="card">
+            <h3>💻 ADSL</h3>
+            <p>Línea de Abonado Digital Asimétrica. Usa el par de cobre de la PSTN. La velocidad de bajada (hasta 24 Mbps con ADSL2+) es mayor que la de subida. Componentes clave: Modem ATU-R, DSLAM en central, y Splitter para separar voz y datos.</p>
+          </div>
+        </div>
+        <p><em>Estas tecnologías complementan el ecosistema de conmutación, extendiendo las capacidades de la red hacia el usuario final (ADSL) o interconectando redes de área local a alta velocidad (SMDS).</em></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
+    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
+  </footer>
+
+  <!-- Vincula el archivo de lógica JavaScript -->
+  <script src="script.js" defer></script>
+</body>
+</html>
