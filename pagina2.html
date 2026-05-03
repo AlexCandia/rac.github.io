@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Redes de Conmutación · Parte 2</title>
+  <link rel="stylesheet" href="paginacss.css">
+</head>
+<body>
+
+  <header>
+    <h1>📡 Redes de Conmutación</h1>
+    <p class="subtitulo">Parte 2: Conmutación de Paquetes y Redes ATM</p>
+    <nav class="main-nav">
+      <a href="index.html">1: Intro-Circuitos</a>
+      <a href="pagina2.html" class="active">2: Paquetes-ATM</a>
+      <a href="pagina3.html">3: Frame Relay-X.25</a>
+      <a href="pagina4.html">4: ADSL-Extras</a>
+    </nav>
+  </header>
+
+  <div class="tabs-container">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-paquetes-intro">📦 Paquetes: Intro</button>
+      <button class="tab-btn" data-tab="tab-paquetes-ventajas">✅ Ventajas Paquetes</button>
+      <button class="tab-btn" data-tab="tab-paquetes-desventajas">❌ Desventajas Paquetes</button>
+      <button class="tab-btn" data-tab="tab-paquetes-modos">🔄 Modos de Conmutación</button>
+      <button class="tab-btn" data-tab="tab-atm-intro">⚛️ ATM: Introducción</button>
+      <button class="tab-btn" data-tab="tab-atm-multiplex">🔀 ATM: Multiplexación</button>
+      <button class="tab-btn" data-tab="tab-atm-modelo">📐 ATM: Modelo de Referencia</button>
+      <button class="tab-btn" data-tab="tab-atm-celdas">🧱 ATM: Celdas y Dispositivos</button>
+      <button class="tab-btn" data-tab="tab-atm-conexiones">🔗 ATM: Conexiones y Proceso</button>
+    </div>
+
+    <div class="tabs-content">
+
+      <!-- PESTAÑA: INTRODUCCIÓN A CONMUTACIÓN DE PAQUETES -->
+      <div class="tab-panel active" id="tab-paquetes-intro">
+        <h2>📦 Conmutación de Paquetes (Packet Switching)</h2>
+        
+        <div class="definition-card">
+          <p>Se denomina <strong>Conmutación de Paquetes</strong> al establecimiento, por parte de una red de comunicaciones, de un intercambio de bloques de información (o "paquetes") con un tamaño específico entre dos puntos: un emisor y un receptor.</p>
+        </div>
+
+        <h3>📦 ¿Cómo Funciona?</h3>
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="step-number">1</span>
+            <p>En el <strong>origen (emisor)</strong>, la información se divide en "paquetes".</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">2</span>
+            <p>A cada paquete se le añade un <strong>encabezado</strong> con información de control: prioridad, direcciones de origen y destino.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">3</span>
+            <p>Los paquetes se transmiten por diferentes medios de conexión entre <strong>nodos temporales</strong> hasta llegar a su destino.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">4</span>
+            <p>En el <strong>destino (receptor)</strong>, los paquetes son reensamblados para obtener el mensaje original.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <p>💡 <strong>Dato clave:</strong> Este método de conmutación es el que más se utiliza en las redes de computadoras actualmente. <strong>Internet es el ejemplo más grande</strong> de red de conmutación de paquetes.</p>
+        </div>
+
+        <h3>🔍 Características Fundamentales</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>📦 Paquetes de Tamaño Arbitrario</h4>
+            <p>El emisor divide los datos en un número arbitrario de paquetes del mismo tamaño, adjuntando cabecera y direcciones.</p>
+          </div>
+          <div class="card">
+            <h4>💾 Almacenamiento Temporal</h4>
+            <p>Los nodos temporales almacenan los paquetes en colas en sus memorias, que no necesitan ser demasiado grandes.</p>
+          </div>
+          <div class="card">
+            <h4>🗺️ Múltiples Caminos</h4>
+            <p>Pueden existir múltiples vías de un punto a otro, siendo gestionado por la red el camino óptimo en cada momento.</p>
+          </div>
+          <div class="card">
+            <h4>📏 Longitud Máxima</h4>
+            <p>La red puede transmitir mensajes de longitud variable pero con una longitud máxima establecida, evitando monopolización.</p>
+          </div>
+        </div>
+
+        <h3>⭐ Ventaja Principal</h3>
+        <div class="highlight-box">
+          <p>Únicamente consume recursos del sistema cuando se envía (o se recibe) un paquete, quedando el sistema libre para manejar otros paquetes con otra información o de otros usuarios. Esto permite inherentemente la <strong>compartición de recursos</strong> entre usuarios y entre informaciones de tipo y origen distinto.</p>
+        </div>
+
+        <h3>⚠️ Inconveniente Principal</h3>
+        <div class="warning-box">
+          <p>Reside en las dificultades en el manejo de informaciones de <strong>tiempo real</strong>, como la voz, es decir, que requieren que los paquetes de datos lleguen con un retardo apropiado y en el orden requerido. Las redes de conmutación de paquetes son capaces de manejar informaciones de tiempo real, pero lo hacen a costa de aumentar su complejidad y capacidades.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: VENTAJAS DE CONMUTACIÓN DE PAQUETES -->
+      <div class="tab-panel" id="tab-paquetes-ventajas">
+        <h2>✅ Ventajas de la Conmutación de Paquetes</h2>
+        
+        <div class="advantage-list">
+          <div class="advantage-item">
+            <h3>🔁 Retransmisión Eficiente ante Errores</h3>
+            <p>Si hay un error de comunicación, se retransmite una cantidad de datos mucho menor que en el caso de mensajes completos. <strong>En caso de error en un paquete, solo se reenvía ese paquete</strong>, sin afectar a los demás que llegaron sin error. Esto optimiza el uso del ancho de banda.</p>
+          </div>
+
+          <div class="advantage-item">
+            <h3>💬 Comunicación Interactiva</h3>
+            <p>Al limitar el tamaño máximo del paquete, se asegura que <strong>ningún usuario pueda monopolizar una línea de transmisión</strong> durante mucho tiempo (microsegundos), por lo que las redes de conmutación de paquetes pueden manejar tráfico interactivo eficientemente.</p>
+          </div>
+
+          <div class="advantage-item">
+            <h3>📈 Aumenta la Flexibilidad y Rentabilidad</h3>
+            <p>La red se vuelve más adaptable y económica de operar. Los recursos se comparten dinámicamente entre todos los usuarios, maximizando la utilización de la infraestructura.</p>
+          </div>
+
+          <div class="advantage-item">
+            <h3>🛤️ Alteración de Ruta Sobre la Marcha</h3>
+            <p>Se puede alterar dinámicamente el camino seguido por una comunicación. Por ejemplo, en caso de avería de uno o más enrutadores, los paquetes pueden buscar rutas alternativas automáticamente.</p>
+          </div>
+
+          <div class="advantage-item">
+            <h3>⭐ Asignación de Prioridades</h3>
+            <p>Se pueden asignar prioridades a los paquetes de una determinada comunicación. Así, un nodo puede seleccionar de su cola de paquetes en espera aquellos que tienen mayor prioridad, garantizando calidad de servicio (QoS).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: DESVENTAJAS DE CONMUTACIÓN DE PAQUETES -->
+      <div class="tab-panel" id="tab-paquetes-desventajas">
+        <h2>❌ Desventajas de la Conmutación de Paquetes</h2>
+        
+        <div class="disadvantage-list">
+          <div class="disadvantage-item">
+            <h3>⚙️ Mayor Complejidad en Equipos Intermedios</h3>
+            <p>Los equipos de conmutación (routers, switches) necesitan <strong>mayor velocidad y capacidad de cálculo</strong> para determinar la ruta adecuada en cada paquete. Esto incrementa el costo y la complejidad del hardware de red.</p>
+          </div>
+
+          <div class="disadvantage-item">
+            <h3>🔄 Duplicidad de Paquetes (Redundancia)</h3>
+            <p>Si un paquete tarda demasiado en llegar a su destino, el host receptor no enviará el acuse de recibo (ACK) al emisor. Al no recibir confirmación, el emisor <strong>volverá a retransmitir los paquetes</strong> de los cuales no recibió acuse, generando tráfico duplicado en la red.</p>
+          </div>
+
+          <div class="disadvantage-item">
+            <h3>📉 Posible Disminución del Rendimiento</h3>
+            <p>Si los cálculos de encaminamiento representan un porcentaje apreciable del tiempo de transmisión, el <strong>rendimiento del canal</strong> (información útil / información transmitida) disminuye, ya que parte del ancho de banda se usa para sobrecarga de control.</p>
+          </div>
+        </div>
+
+        <div class="comparison-note">
+          <p>📝 <strong>Nota comparativa:</strong> A pesar de estas desventajas, la flexibilidad y eficiencia de la conmutación de paquetes la han convertido en la tecnología dominante para redes de datos, siendo la base de Internet y de la mayoría de las redes modernas.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: MODOS DE CONMUTACIÓN DE PAQUETES -->
+      <div class="tab-panel" id="tab-paquetes-modos">
+        <h2>🔄 Modos de Conmutación de Paquetes</h2>
+        <p>Existen dos modos fundamentales de operación para la conmutación de paquetes, cada uno con sus propias características y aplicaciones:</p>
+
+        <div class="modes-comparison">
+          <div class="mode-card virtual">
+            <h3>🔗 Circuito Virtual (Virtual Circuit)</h3>
+            <div class="mode-content">
+              <p><strong>Definición:</strong> Cada paquete se encamina por el mismo circuito virtual que los anteriores. Se establece una ruta fija antes de comenzar la transmisión.</p>
+              
+              <h4>Características:</h4>
+              <ul>
+                <li>✅ Se <strong>controla y asegura el orden</strong> de llegada de los paquetes a destino.</li>
+                <li>✅ Similar a la conmutación de circuitos pero con paquetes.</li>
+                <li>✅ Menor sobrecarga de procesamiento en cada nodo.</li>
+                <li>✅ Ideal para aplicaciones que requieren orden secuencial.</li>
+              </ul>
+
+              <h4>Proceso:</h4>
+              <ol>
+                <li>Establecimiento del circuito virtual (fase de conexión).</li>
+                <li>Transferencia de datos por la ruta establecida.</li>
+                <li>Liberación del circuito virtual (fase de desconexión).</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="mode-card datagram">
+            <h3>📨 Datagrama (Datagram)</h3>
+            <div class="mode-content">
+              <p><strong>Definición:</strong> Cada paquete se encamina de manera <strong>independiente</strong> de los demás. No se establece una conexión previa.</p>
+              
+              <h4>Características:</h4>
+              <ul>
+                <li>⚠️ La red <strong>no puede controlar el camino</strong> seguido por los paquetes.</li>
+                <li>⚠️ <strong>No se asegura el orden</strong> de llegada a destino.</li>
+                <li>✅ Mayor flexibilidad y tolerancia a fallos.</li>
+                <li>✅ No requiere fase de establecimiento de conexión.</li>
+              </ul>
+
+              <h4>Proceso:</h4>
+              <ol>
+                <li>Cada paquete lleva la dirección completa de destino.</li>
+                <li>Cada nodo decide independientemente la ruta del paquete.</li>
+                <li>Los paquetes pueden llegar por diferentes rutas y en desorden.</li>
+                <li>El destino se encarga de reordenar los paquetes recibidos.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-table">
+          <h3>📊 Comparativa Rápida</h3>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr><th>Característica</th><th>Circuito Virtual</th><th>Datagrama</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Establecimiento de conexión</td><td>Sí (3 fases)</td><td>No</td></tr>
+                <tr><td>Ruta de paquetes</td><td>Misma ruta</td><td>Rutas independientes</td></tr>
+                <tr><td>Orden de llegada</td><td>Garantizado</td><td>No garantizado</td></tr>
+                <tr><td>Tolerancia a fallos</td><td>Menor</td><td>Mayor</td></tr>
+                <tr><td>Sobrecarga de cabecera</td><td>Menor (solo identificador)</td><td>Mayor (dirección completa)</td></tr>
+                <tr><td>Ejemplo típico</td><td>ATM, Frame Relay, MPLS</td><td>Internet (IP)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: REDES ATM - INTRODUCCIÓN -->
+      <div class="tab-panel" id="tab-atm-intro">
+        <h2>⚛️ Redes ATM: Introducción</h2>
+        
+        <div class="definition-card">
+          <h3>ATM = Modo de Transferencia Asíncrona</h3>
+          <p><strong>ATM (Asynchronous Transfer Mode)</strong> es una tecnología para generar redes de <strong>alta capacidad y respuesta</strong> que permite el tráfico de grandes cantidades de información.</p>
+        </div>
+
+        <h3>🎯 Objetivo y Funcionamiento</h3>
+        <div class="card">
+          <p>A fin de aprovechar al máximo la capacidad de los sistemas de transmisión (cable o radioeléctricos), la información <strong>no es transmitida y conmutada a través de canales asignados en permanencia</strong>, sino en forma de cortos paquetes (<strong>celdas ATM</strong>) de longitud constante que pueden ser enrutadas individualmente mediante el uso de <strong>canales virtuales y trayectos virtuales</strong>.</p>
+        </div>
+
+        <h3>🏗️ Red Troncal (Backbone)</h3>
+        <p>Una red de transporte, también denominada "red troncal", "núcleo de red" o "backbone", tiene como objetivo <strong>concentrar el tráfico de información</strong> que proviene de las redes de acceso para llevarlo a mayores distancias. ATM fue diseñada precisamente para funcionar como columna vertebral de las redes de telecomunicaciones.</p>
+
+        <h3>⚡ Velocidades de Transmisión ATM</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Estándar</th><th>Velocidad</th><th>Medio de Transmisión</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>STM1 / OC3</strong></td><td>155.52 Mbps</td><td>Fibra óptica o cable STP5</td></tr>
+              <tr><td><strong>STM4 / OC12</strong></td><td>622.5 Mbps</td><td>Solo fibra óptica</td></tr>
+              <tr><td><strong>STM16 / OC48</strong></td><td>2.5 Gbps</td><td>Solo fibra óptica</td></tr>
+              <tr><td><strong>STM64 / OC192</strong></td><td>~10 Gbps</td><td>Solo fibra óptica (sobre-multiplexación)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>🎛️ Parámetros de Calidad de Servicio (QoS)</h3>
+        <div class="info-box">
+          <p>💡 Todas las transmisiones de ATM contienen parámetros de <strong>QoS (Quality of Service), ToS (Type of Service), performance</strong> y muchos parámetros más para asegurar la transmisión. Esto permite garantizar diferentes niveles de servicio según el tipo de tráfico (voz, video, datos).</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: MULTIPLEXACIÓN -->
+      <div class="tab-panel" id="tab-atm-multiplex">
+        <h2>🔀 Multiplexación en Redes ATM</h2>
+        
+        <div class="definition-card">
+          <p>En telecomunicación, la <strong>multiplexación</strong> es la combinación de dos o más canales de información en un solo medio de transmisión usando un dispositivo llamado <strong>multiplexor</strong>. El proceso inverso se conoce como <strong>demultiplexación</strong>.</p>
+        </div>
+
+        <h3>📊 Estrategias de Multiplexación</h3>
+        <p>Existen muchas estrategias según el protocolo de comunicación empleado. Las más utilizadas son:</p>
+
+        <div class="multiplex-grid">
+          <div class="multiplex-card">
+            <h4>⏱️ TDM (Time Division Multiplexing)</h4>
+            <p><strong>Multiplexación por División de Tiempo.</strong> Asigna intervalos de tiempo específicos a cada canal en un ciclo repetitivo. Cada usuario transmite en su ranura temporal asignada.</p>
+            <p><em>Ejemplo: redes telefónicas digitales tradicionales.</em></p>
+          </div>
+
+          <div class="multiplex-card">
+            <h4>📻 FDM (Frequency Division Multiplexing)</h4>
+            <p><strong>Multiplexación por División de Frecuencia.</strong> Divide el espectro de frecuencia disponible en bandas más pequeñas, asignando una banda a cada canal.</p>
+            <p><em>Ejemplo: transmisión de canales de TV por aire (6MHz por canal).</em></p>
+          </div>
+
+          <div class="multiplex-card">
+            <h4>🌈 WDM (Wavelength Division Multiplexing)</h4>
+            <p><strong>Multiplexación por División de Longitud de Onda.</strong> Equivalente a FDM pero para medios ópticos. Diferentes longitudes de onda (colores de luz) viajan simultáneamente por la misma fibra.</p>
+            <p><em>Ejemplo: fibras ópticas de larga distancia con múltiples señales.</em></p>
+          </div>
+
+          <div class="multiplex-card">
+            <h4>🔢 CDM (Code Division Multiplexing)</h4>
+            <p><strong>Multiplexación por División en Código.</strong> Múltiples usuarios comparten la misma frecuencia y tiempo, pero usando códigos diferentes para separar las señales.</p>
+            <p><em>Ejemplo: telefonía móvil 3G (CDMA).</em></p>
+          </div>
+        </div>
+
+        <h3>📱 Métodos de Acceso Múltiple</h3>
+        <p>Cuando existe un esquema de multiplexación pensado para que múltiples usuarios compartan un medio común (como telefonía móvil o WiFi), se denomina <strong>control de acceso al medio</strong> o método de acceso múltiple:</p>
+        <ul>
+          <li><strong>FDMA:</strong> Acceso múltiple por división de frecuencia.</li>
+          <li><strong>TDMA:</strong> Acceso múltiple por división de tiempo.</li>
+          <li><strong>CDMA:</strong> Acceso múltiple por división de código.</li>
+        </ul>
+
+        <h3>💻 Multiplexación en Informática</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>🖥️ En la CPU</h4>
+            <p>A cada proceso se le asigna un <strong>quantum de tiempo</strong> durante el cual puede ejecutar sus instrucciones, antes de ceder el sitio a otro proceso en espera. El planificador de procesos gestiona esta multiplexación temporal.</p>
+          </div>
+          <div class="card">
+            <h4>💾 En Almacenamiento</h4>
+            <p>Multiplexar un archivo significa mantener varias copias idénticas para respaldar información en caso de que ocurra un fallo en el archivo principal (redundancia).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: MODELO DE REFERENCIA ATM -->
+      <div class="tab-panel" id="tab-atm-modelo">
+        <h2>📐 Modelo de Referencia ATM</h2>
+        
+        <div class="info-box">
+          <p>💡 La funcionalidad de ATM se corresponde con la <strong>capa física</strong> y parte de la <strong>capa de enlace</strong> del modelo de referencia OSI (Open Systems Interconnection) de la ISO.</p>
+        </div>
+
+        <h3>🗂️ Planos del Modelo ATM</h3>
+        <div class="planes-grid">
+          <div class="plane">
+            <h4>🎛️ Plano de Control</h4>
+            <p>Responsable de <strong>generar y manejar las peticiones de señalización</strong>. Se encarga del establecimiento, mantenimiento y liberación de conexiones virtuales.</p>
+          </div>
+          <div class="plane">
+            <h4>👤 Plano de Usuario</h4>
+            <p>Responsable de <strong>manejar la transferencia de datos</strong> del usuario. Transporta la información propiamente dicha entre los extremos de la comunicación.</p>
+          </div>
+          <div class="plane">
+            <h4>🔧 Plano de Gestión</h4>
+            <p>Contiene dos componentes:</p>
+            <ul>
+              <li><strong>Gestión de capa:</strong> Maneja funciones específicas del nivel ATM (detección de fallos, problemas de protocolo).</li>
+              <li><strong>Gestión de plano:</strong> Maneja y coordina funciones relacionadas con el sistema completo.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>📚 Capas del Modelo ATM</h3>
+        <div class="layers-grid">
+          <div class="layer">
+            <h4>🔌 Capa Física</h4>
+            <p>Semejante a la capa física del modelo OSI. Maneja la transmisión dependiente del medio físico. <strong>Define las características eléctricas y las interfaces de red.</strong> Se encarga de convertir las celdas en señales para el medio de transmisión.</p>
+          </div>
+
+          <div class="layer">
+            <h4>⚛️ Capa ATM</h4>
+            <p>En combinación con la capa de adaptación ATM, es análoga a la capa de enlace de datos del modelo OSI. Es responsable del <strong>establecimiento de conexiones y del paso de celdas</strong> a través de la red ATM. Toma los datos a enviar y añade la información de la cabecera de 5 bytes que asegura que la celda es enviada por la conexión correcta.</p>
+          </div>
+
+          <div class="layer">
+            <h4>🔧 Capa de Adaptación ATM (AAL)</h4>
+            <p>Combinada con la capa ATM, es semejante al nivel de enlace de datos del modelo OSI. Es responsable de:</p>
+            <ul>
+              <li><strong>Aislar los detalles</strong> de los procesos ATM a los protocolos de niveles superior.</li>
+              <li><strong>Asegurar las características de servicio</strong> apropiadas.</li>
+              <li><strong>Segmentar cualquier tipo de tráfico</strong> en una carga de 48 bytes que será transmitida en las celdas ATM.</li>
+            </ul>
+            <p>Se han especificado varias capas AAL para adaptar el flujo de celdas ATM a diferentes tipos de servicio (AAL1 para voz, AAL5 para datos, etc.).</p>
+          </div>
+
+          <div class="layer">
+            <h4>📤 Capas Superiores</h4>
+            <p>Son las capas que residen sobre la AAL. <strong>Aceptan los datos de usuario, los clasifican en paquetes, y los pasan a la AAL</strong> para su procesamiento y transmisión a través de la red ATM.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: CELDAS ATM Y DISPOSITIVOS -->
+      <div class="tab-panel" id="tab-atm-celdas">
+        <h2>🧱 Formato de las Celdas ATM y Dispositivos</h2>
+        
+        <h3>🔌 Dispositivos de una Red ATM</h3>
+        <div class="device-grid">
+          <div class="device">
+            <h4>🔀 Switch ATM</h4>
+            <p>Responsable del tránsito de celdas a través de la red ATM. <strong>Acepta celdas, lee y actualiza la información en la cabecera</strong>, y rápidamente conmuta la celda a una interfaz de salida hacia su destino.</p>
+          </div>
+          <div class="device">
+            <h4>🖥️ Punto Final ATM (Sistema Final)</h4>
+            <p>Contiene un adaptador de interfaz a la red ATM que <strong>lee los bytes de datos de la celda</strong>. Ejemplos: estaciones de trabajo, routers, unidades de servicio digitales, conmutadores LAN, codificadores/decodificadores de vídeo.</p>
+          </div>
+        </div>
+
+        <h3>📦 La Celda ATM: Estructura Básica</h3>
+        <div class="definition-card">
+          <p>La transferencia de información en ATM utiliza paquetes de <strong>longitud corta y fija</strong>, denominados <strong>celdas</strong>. Cada celda consta de <strong>53 octetos o bytes</strong>, tamaño que consigue el mejor equilibrio entre la eficiencia de transmisión de datos y los requerimientos de retardo para el tráfico de voz y vídeo.</p>
+        </div>
+
+        <div class="cell-structure">
+          <div class="cell-header">
+            <h4>📋 Header (Cabecera) - 5 bytes</h4>
+            <p>Tres funciones principales:</p>
+            <ol>
+              <li><strong>Identificación del canal</strong> (VPI/VCI).</li>
+              <li><strong>Información para detección de errores</strong> (HEC).</li>
+              <li>Indicación de si la célula es o no utilizada.</li>
+            </ol>
+            <p>Eventualmente puede contener también corrección de errores y un número de secuencia.</p>
+          </div>
+          <div class="cell-payload">
+            <h4>📦 Payload (Carga Útil) - 48 bytes</h4>
+            <p>Contiene fundamentalmente:</p>
+            <ul>
+              <li><strong>Datos del usuario.</strong></li>
+              <li>Protocolos AAL que también son considerados como datos del usuario.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>📋 Formatos de Cabecera ATM</h3>
+        <p>La cabecera ATM tiene dos formatos, el <strong>UNI</strong> y el <strong>NNI</strong>. Dos de los conceptos más significativos de ATM, <strong>Canales Virtuales (VCI)</strong> y <strong>Rutas Virtuales (VPI)</strong>, están materializados en dos identificadores en el header de cada célula; ambos determinan el enrutamiento entre nodos.</p>
+
+        <div class="header-formats">
+          <div class="format">
+            <h4>🏢 Celda UNI (User to Network Interface)</h4>
+            <p>Utilizada para la comunicación entre los <strong>puntos finales ATM y los conmutadores ATM</strong>. Es la interfaz usuario-red. Es el formato más utilizado en conexiones de usuario final.</p>
+          </div>
+          <div class="format">
+            <h4>🔗 Celda NNI (Network to Network Interface)</h4>
+            <p>Utilizada para la comunicación <strong>entre conmutadores ATM</strong>. Se refiere a la conexión de Switches ATM en redes privadas o públicas. Extiende el campo VPI a 12 bits usando el espacio GFC.</p>
+          </div>
+        </div>
+
+        <h3>📊 Campos Detallados de la Cabecera ATM</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Campo</th><th>Bits</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GFC</strong></td>
+                <td>4</td>
+                <td><strong>Generic Flow Control</strong> (Control de Flujo Genérico). Originalmente para gestión de tráfico, pero en la práctica no es utilizado. En celdas NNI se emplea para extender el campo VPI a 12 bits. La cabecera UNI no soporta GFC.</td>
+              </tr>
+              <tr>
+                <td><strong>VPI</strong></td>
+                <td>8 (UNI) / 12 (NNI)</td>
+                <td><strong>Virtual Path Identifier</strong> (Identificador de Trayecto Virtual). Identifica el camino virtual (VP) que agrupa múltiples canales virtuales.</td>
+              </tr>
+              <tr>
+                <td><strong>VCI</strong></td>
+                <td>16</td>
+                <td><strong>Virtual Channel Identifier</strong> (Identificador de Canal Virtual). Identifica el canal virtual específico dentro de un trayecto virtual.</td>
+              </tr>
+              <tr>
+                <td><strong>PTI</strong></td>
+                <td>3</td>
+                <td><strong>Payload Type Identifier</strong>. Bit 1: indica si la celda contiene datos de usuario o de control. Bit 2: indica congestión en la red. Bit 3: indica si la celda es la última en una serie (trama AAL5).</td>
+              </tr>
+              <tr>
+                <td><strong>CLP</strong></td>
+                <td>1</td>
+                <td><strong>Cell Loss Priority</strong> (Prioridad de Pérdida de Celda). Si está activo (CLP=1), la celda puede ser descartada antes que celdas con CLP=0 en caso de congestión.</td>
+              </tr>
+              <tr>
+                <td><strong>HEC</strong></td>
+                <td>8</td>
+                <td><strong>Header Error Correction</strong> (Corrección de Errores de Cabecera). Contiene un código CRC que solo cubre la cabecera, permitiendo detectar errores múltiples y corregir errores simples. Si hay más de 2 errores, la celda se descarta.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>🗺️ Concepto de VP (Virtual Path) y VC (Virtual Channel)</h3>
+        <div class="vpvc-explanation">
+          <p>Un <strong>Camino Virtual (VP)</strong> no es más que la multiplexación de diversos flujos de tráfico sobre un mismo medio de transmisión, identificado por el VPI. Un camino de transmisión es un conjunto de VPs.</p>
+          <p>En ATM, cada uno de estos VPs es más tarde multiplexado en un cierto número de <strong>Canales Virtuales (VCs)</strong>, identificados mediante los VCIs.</p>
+          <p>Un VP es, por lo tanto, un <strong>conjunto de VCs</strong>, cada uno de los cuales es conmutado de forma transparente a través de la red ATM en base a un VPI común.</p>
+          <div class="info-box">
+            <p>💡 <strong>Importante:</strong> Los VCIs y VPIs sólo tienen un significado <strong>local</strong> a lo largo de un enlace en particular y se hace una correspondencia, cuando sea apropiado, en cada conmutador. Es decir, los identificadores pueden cambiar en cada salto de la red.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: CONEXIONES ATM Y PROCESO -->
+      <div class="tab-panel" id="tab-atm-conexiones">
+        <h2>🔗 Conexiones y Proceso ATM</h2>
+        
+        <h3>⚙️ Proceso de Transmisión ATM</h3>
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="step-number">1</span>
+            <p>En el <strong>terminal transmisor</strong>, la información es escrita byte a byte en el campo de información de usuario de la celda y a continuación se le añade la cabecera.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">2</span>
+            <p>Diferentes flujos de información, de características distintas en cuanto a velocidad y formato, son <strong>agrupados en el Módulo ATM</strong> para ser transportados mediante grandes enlaces de transmisión a velocidades de 155 o 622 Mbit/s (generalmente mediante sistemas SDH).</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">3</span>
+            <p>En el <strong>extremo receptor</strong>, se extrae la información byte a byte de las celdas entrantes y, de acuerdo con la información de cabecera, la envía donde ésta le indique (equipo terminal u otro módulo ATM).</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">4</span>
+            <p>En caso de haber más de un camino entre origen y destino, <strong>no todas las celdas seguirán necesariamente la misma ruta</strong>, ya que en ATM todas las conexiones funcionan sobre una base virtual.</p>
+          </div>
+        </div>
+
+        <h3>🔗 Tipos de Conexiones ATM</h3>
+        <div class="connection-types">
+          <div class="connection-type pvc">
+            <h4>📌 PVC (Permanent Virtual Connection)</h4>
+            <p><strong>Conexión Virtual Permanente.</strong> El ancho de banda se establece de forma permanente, similar a una <strong>línea alquilada</strong>. La conexión está siempre disponible.</p>
+            <ul>
+              <li>✅ Siempre activa, no requiere establecimiento.</li>
+              <li>✅ Ideal para conexiones constantes entre sitios fijos.</li>
+              <li>❌ Menos flexible, requiere configuración manual.</li>
+            </ul>
+          </div>
+          <div class="connection-type svc">
+            <h4>🔄 SVC (Switched Virtual Connection)</h4>
+            <p><strong>Conexión Virtual Conmutada.</strong> El ancho de banda se reserva al iniciar la sesión mediante señalización y se libera al finalizar, similar a una <strong>llamada telefónica</strong>.</p>
+            <ul>
+              <li>✅ Más flexible, se establece bajo demanda.</li>
+              <li>✅ Optimiza el uso de recursos de red.</li>
+              <li>✅ Similar al concepto de llamada en la red telefónica básica.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🔗 Tipos de Conexiones por Topología</h3>
+        <div class="topology-types">
+          <div class="topology">
+            <h4>📍 Punto a Punto</h4>
+            <p>Conectan <strong>dos sistemas finales ATM</strong>. Pueden ser unidireccionales o bidireccionales. Es el tipo más común de conexión.</p>
+          </div>
+          <div class="topology">
+            <h4>🌐 Punto a Multipunto</h4>
+            <p>Conectan un <strong>único sistema final origen con múltiples sistemas finales destino</strong>. Solo pueden ser unidireccionales. Útil para difusión de contenido (broadcast/multicast).</p>
+          </div>
+        </div>
+
+        <h3>📊 Características Importantes de las Conexiones ATM</h3>
+        <div class="card">
+          <ul>
+            <li>Cuando se establece un circuito a través de un sistema ATM, <strong>todas las celdas relacionadas con ese flujo de datos viajan por la misma ruta</strong> durante toda la sesión.</li>
+            <li>Por lo tanto, <strong>las celdas llegan en orden</strong>, simplificando su procesamiento en el destino.</li>
+            <li>En cambio, en la conmutación de paquetes tradicional (datagrama), los paquetes se encaminan dinámicamente en cada nodo y pueden llegar desordenados.</li>
+            <li>Los sistemas de señalización y gestión <strong>reservan un canal virtual</strong> con una cantidad apropiada de ancho de banda dentro de un camino con mayor ancho de banda.</li>
+            <li>ATM está orientado a conexión: antes de transmitir datos, se establece un camino virtual a través de la red.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
+    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
+    <nav class="footer-nav">
+      <a href="index.html">← Anterior: Introducción y Circuitos</a>
+      <span>Página 2 de 4</span>
+      <a href="pagina3.html">Siguiente: Frame Relay y X.25 →</a>
+    </nav>
+  </footer>
+
+  <script src="paginajs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Redes de Conmutación · Parte 3</title>
+  <link rel="stylesheet" href="paginacss.css">
+</head>
+<body>
+
+  <header>
+    <h1>📡 Redes de Conmutación</h1>
+    <p class="subtitulo">Parte 3: SMDS, Redes X.25 y Frame Relay</p>
+    <nav class="main-nav">
+      <a href="index.html">1: Intro-Circuitos</a>
+      <a href="pagina2.html">2: Paquetes-ATM</a>
+      <a href="pagina3.html" class="active">3: Frame Relay-X.25</a>
+      <a href="pagina4.html">4: ADSL-Extras</a>
+    </nav>
+  </header>
+
+  <div class="tabs-container">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-smds-intro">🏙️ SMDS: Introducción</button>
+      <button class="tab-btn" data-tab="tab-smds-caract">📋 SMDS: Características</button>
+      <button class="tab-btn" data-tab="tab-x25-intro">📠 X.25: Introducción</button>
+      <button class="tab-btn" data-tab="tab-x25-dispos">🔌 X.25: Dispositivos y PAD</button>
+      <button class="tab-btn" data-tab="tab-x25-servicios">🔄 X.25: Servicios y SVC</button>
+      <button class="tab-btn" data-tab="tab-x25-protocolos">📡 X.25: Protocolos (PLP, LAPB, X.21bis)</button>
+      <button class="tab-btn" data-tab="tab-frame-intro">🖼️ Frame Relay: Introducción</button>
+      <button class="tab-btn" data-tab="tab-frame-detalle">🔍 Frame Relay: Detalles, Ventajas y Desventajas</button>
+    </div>
+
+    <div class="tabs-content">
+
+      <!-- PESTAÑA: SMDS - INTRODUCCIÓN -->
+      <div class="tab-panel active" id="tab-smds-intro">
+        <h2>🏙️ SMDS: Servicio de Datos Conmutado Multimegabits</h2>
+        
+        <div class="definition-card">
+          <p><strong>SMDS (Switched Multimegabit Data Service)</strong> es un servicio de red de área extendida (WAN) diseñado específicamente para una <strong>conectividad LAN a LAN</strong>. Es una red metropolitana (MAN), con base en celdas, sin conexión, de alta velocidad, público, banda ancha y paquetes conmutados.</p>
+        </div>
+
+        <h3>📦 Estructura de las Celdas SMDS</h3>
+        <div class="cell-structure smds">
+          <div class="cell-header">
+            <h4>📋 Encabezado (Header) - 7 bytes</h4>
+            <p>Contiene información de direccionamiento y control para el enrutamiento de la celda a través de la red metropolitana.</p>
+          </div>
+          <div class="cell-payload">
+            <h4>📦 Carga Útil (Payload) - 44 bytes</h4>
+            <p>Transporta los datos del usuario. Es más pequeña que la de ATM (48 bytes) debido al mayor tamaño del encabezado SMDS.</p>
+          </div>
+          <div class="cell-trailer">
+            <h4>🔚 Cola (Trailer) - 2 bytes</h4>
+            <p>Contiene información de control al final de la celda, como verificación de errores.</p>
+          </div>
+        </div>
+        <p class="cell-total"><strong>Total: 53 bytes</strong> (mismo tamaño que una celda ATM, pero con distribución interna diferente: 7+44+2 vs 5+48 de ATM).</p>
+
+        <h3>⚡ Velocidades de Datos Soportadas</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Estándar</th><th>Velocidad</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>DS-1</strong></td><td>1.544 Mbps</td><td>Estándar T1 norteamericano.</td></tr>
+              <tr><td><strong>DS-3</strong></td><td>44.736 Mbps</td><td>Estándar T3 norteamericano (28 DS-1 multiplexados).</td></tr>
+              <tr><td><strong>SONET</strong></td><td>51.84 Mbps (STS-1) en adelante</td><td>Jerarquía Digital Síncrona para fibra óptica (OC-1, OC-3, OC-12...).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>📜 Antecedentes Históricos</h3>
+        <div class="historical-note">
+          <p>Antes de SMDS, el <strong>único método existente para conectar LANs</strong> era a través de líneas alquiladas a velocidades de 56 kbps, 16 Mbps para Token Ring y 10 Mbps para Ethernet.</p>
+          <p>Los problemas de utilizar una línea alquilada eran:</p>
+          <ul>
+            <li>💸 <strong>Costos elevados</strong> de estas líneas dedicadas.</li>
+            <li>🚦 <strong>Congestiones frecuentes</strong> cuando el tráfico excedía la capacidad contratada.</li>
+            <li>⚡ La <strong>velocidad de la LAN excedía la velocidad de la línea</strong> contratada, creando cuellos de botella.</li>
+          </ul>
+          <p>SMDS surgió como una solución <strong>más económica y flexible</strong> para interconectar redes de área local a altas velocidades dentro de un área metropolitana.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: SMDS - CARACTERÍSTICAS -->
+      <div class="tab-panel" id="tab-smds-caract">
+        <h2>📋 Características Técnicas de SMDS</h2>
+        
+        <h3>🔌 Interfaz de Red (SNI - Subscriber Network Interface)</h3>
+        <div class="card">
+          <p>El interfaz de red a los locales del abonado se denomina <strong>SNI (Interfaz de Subred de Abonado)</strong>. Las tramas "no orientadas a conexión" son enviadas sobre el SNI entre equipos de abonado y el equipamiento de la red pública.</p>
+          <ul>
+            <li>El formato de los datos y el nivel de adaptación es <strong>idéntico al especificado por IEEE 802.6</strong> (estándar para redes metropolitanas DQDB).</li>
+            <li>El SNI se especifica como un <strong>interfaz DQDB punto-a-punto</strong>, aunque el interfaz punto-a-multipunto no está excluido.</li>
+            <li>El caso de bucle de bus dual no se ha contemplado por su complejidad y coste, y porque existen alternativas más simples para ofrecer redundancia.</li>
+          </ul>
+        </div>
+
+        <h3>📋 Características Adicionales</h3>
+        <div class="feature-list">
+          <div class="feature-item">
+            <h4>🔌 Nivel Físico</h4>
+            <p>El nivel físico del SNI es el especificado por el estándar <strong>IEEE 802.6</strong> (DQDB - Distributed Queue Dual Bus), diseñado para redes metropolitanas de alta velocidad.</p>
+          </div>
+
+          <div class="feature-item">
+            <h4>📮 Direccionamiento</h4>
+            <p>Las direcciones fuente y destino conforman el estándar <strong>E.164</strong> (numeración telefónica internacional). SMDS soporta también direcciones de <strong>broadcast y multicast</strong> E.164, permitiendo enviar datos a múltiples destinos simultáneamente.</p>
+          </div>
+
+          <div class="feature-item">
+            <h4>🔒 Grupos Cerrados de Usuarios</h4>
+            <p>Capacidad de definir <strong>Grupos Cerrados de Usuarios</strong> mediante validación de direcciones tanto en salida como en destino. Esto permite crear redes privadas virtuales dentro de la infraestructura pública de SMDS, restringiendo la comunicación solo a miembros autorizados del grupo.</p>
+          </div>
+        </div>
+
+        <div class="summary-box">
+          <h4>🏙️ En Resumen: ¿Qué es SMDS?</h4>
+          <ul>
+            <li>✅ Servicio de red <strong>metropolitana (MAN)</strong> de alta velocidad.</li>
+            <li>✅ Basado en <strong>celdas de 53 bytes</strong> (similar a ATM).</li>
+            <li>✅ <strong>Sin conexión</strong> (no requiere establecimiento previo).</li>
+            <li>✅ <strong>Público</strong> (ofrecido por operadores de telecomunicaciones).</li>
+            <li>✅ Diseñado para <strong>interconectar LANs</strong> (redes de área local).</li>
+            <li>✅ Soporta velocidades desde DS-1 (1.5 Mbps) hasta SONET.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: X.25 - INTRODUCCIÓN -->
+      <div class="tab-panel" id="tab-x25-intro">
+        <h2>📠 Redes X.25: Introducción</h2>
+        
+        <div class="definition-card">
+          <p><strong>X.25</strong> es un protocolo estándar para la comunicación en una <strong>WAN (Wide Area Network)</strong>. Define cómo deben establecerse y mantenerse las conexiones entre los dispositivos del usuario y los dispositivos de la red.</p>
+        </div>
+
+        <h3>🎯 Características Fundamentales</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>🔌 Independencia de Sistemas</h4>
+            <p>X.25 está diseñado para <strong>operar efectivamente sin importar los tipos de sistemas</strong> conectados a la red. Cualquier dispositivo que implemente el estándar puede comunicarse.</p>
+          </div>
+          <div class="card">
+            <h4>📦 Conmutación de Paquetes</h4>
+            <p>Se utiliza específicamente en las <strong>redes de conmutación de paquetes</strong>. Fue el protocolo pionero que popularizó este tipo de redes para datos.</p>
+          </div>
+          <div class="card">
+            <h4>📅 Historia</h4>
+            <p>Inicialmente fue desarrollado por los <strong>carriers (operadores de telecomunicaciones)</strong> en <strong>1970</strong>. Actualmente se administra como un estándar internacional por la <strong>ITU-T</strong> (Unión Internacional de Telecomunicaciones).</p>
+          </div>
+        </div>
+
+        <h3>🔍 Contexto Histórico y Tecnológico</h3>
+        <div class="historical-note">
+          <p>X.25 fue diseñado en una época donde la infraestructura de telecomunicaciones era predominantemente <strong>analógica</strong> y con <strong>altas tasas de error</strong> en las líneas de transmisión. Por esta razón, el protocolo incorpora:</p>
+          <ul>
+            <li>🔍 <strong>Abundantes controles de errores</strong> en cada salto de la red.</li>
+            <li>🔄 <strong>Mecanismos redundantes</strong> para el control de flujo.</li>
+            <li>📦 <strong>Paquetes de tamaño pequeño</strong> para facilitar las retransmisiones en caso de error.</li>
+          </ul>
+          <p>Esto lo hacía muy <strong>robusto pero lento</strong> para los estándares modernos.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: X.25 - DISPOSITIVOS Y PAD -->
+      <div class="tab-panel" id="tab-x25-dispos">
+        <h2>🔌 Dispositivos X.25 y PAD</h2>
+        
+        <h3>📋 Clasificación de Dispositivos X.25</h3>
+        <div class="device-classification">
+          <div class="device-card">
+            <h4>💻 DTE (Data Terminal Equipment)</h4>
+            <p><strong>Equipo Terminal de Datos.</strong> Es el dispositivo del usuario final que se conecta a la red X.25. Puede ser una computadora, un terminal, una impresora de red, etc. <strong>Inicia o recibe las comunicaciones.</strong></p>
+            <p><em>Ejemplo: una computadora personal con software X.25, un cajero automático bancario.</em></p>
+          </div>
+
+          <div class="device-card">
+            <h4>🔌 DCE (Data Circuit-Terminating Equipment)</h4>
+            <p><strong>Equipo de Terminación de Circuito de Datos.</strong> Es el dispositivo que proporciona el acceso a la red X.25. Actúa como <strong>interfaz entre el DTE y la red</strong> de conmutación de paquetes.</p>
+            <p><em>Ejemplo: un módem X.25, un switch de acceso a la red pública.</em></p>
+          </div>
+
+          <div class="device-card">
+            <h4>🔄 PSE (Packet Switching Exchange)</h4>
+            <p><strong>Central de Conmutación de Paquetes.</strong> Son los nodos intermedios de la red X.25. <strong>Encaminan los paquetes</strong> desde el origen hasta el destino a través de la nube de conmutación.</p>
+            <p><em>Ejemplo: los switches de la red pública de datos de un operador.</em></p>
+          </div>
+        </div>
+
+        <h3>📦 PAD (Packet Assembler / Disassembler)</h3>
+        <div class="definition-card">
+          <p>El <strong>PAD (Ensamblador/Desensamblador de Paquetes)</strong> es un dispositivo muy común en las redes X.25. Se utiliza cuando el dispositivo DTE es <strong>demasiado simple</strong> como para implementar todas las funcionalidades del protocolo X.25 por sí mismo.</p>
+        </div>
+
+        <h3>⚙️ Tres Funciones Primarias del PAD</h3>
+        <div class="pad-functions">
+          <div class="pad-function">
+            <h4>1️⃣ Buffering (Almacenamiento en Búfer)</h4>
+            <p><strong>Almacena los datos</strong> temporalmente hasta que el dispositivo está listo para transmitirlos o recibirlos. Actúa como un amortiguador entre el dispositivo simple y la red.</p>
+          </div>
+          <div class="pad-function">
+            <h4>2️⃣ Ensamblaje de Paquetes (Assembly)</h4>
+            <p><strong>Forma paquetes</strong> con los datos provenientes del DTE para enviarlos hacia el DCE. Divide el flujo de datos del usuario en paquetes X.25 con sus cabeceras correspondientes.</p>
+          </div>
+          <div class="pad-function">
+            <h4>3️⃣ Desensamblaje de Paquetes (Disassembly)</h4>
+            <p>Los paquetes de entrada provenientes de la red los <strong>desensambla antes de enviarlos al DTE</strong>. Extrae los datos útiles de los paquetes y los entrega al dispositivo terminal en un formato que este pueda entender.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <p>💡 <strong>Dato clave:</strong> El PAD permite que dispositivos antiguos o muy simples (como terminales tontas) puedan conectarse a una red X.25 sin necesidad de tener implementada toda la pila de protocolos. El PAD actúa como un "traductor" entre el lenguaje del dispositivo y el lenguaje de la red.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: X.25 - SERVICIOS Y SVC -->
+      <div class="tab-panel" id="tab-x25-servicios">
+        <h2>🔄 Servicios X.25 y Circuitos Virtuales Conmutados</h2>
+        
+        <h3>📋 Naturaleza del Servicio</h3>
+        <div class="card">
+          <p>X.25 es un protocolo <strong>orientado a conexión</strong>. Esto significa que antes de transmitir datos, se debe establecer una conexión lógica entre los extremos. Ofrece principalmente dos tipos de servicios de circuito virtual:</p>
+        </div>
+
+        <h3>🔗 Tipos de Servicios X.25</h3>
+        <div class="service-comparison">
+          <div class="service pvc">
+            <h4>📌 PVC (Permanent Virtual Circuit)</h4>
+            <p><strong>Circuito Virtual Permanente.</strong> Es el equivalente a una <strong>línea dedicada</strong> en el mundo de la conmutación de paquetes.</p>
+            <ul>
+              <li>✅ Es definido de manera <strong>estática</strong> por el administrador de la red.</li>
+              <li>✅ <strong>Siempre está disponible</strong> mientras la red lo esté (no requiere establecimiento de llamada).</li>
+              <li>✅ Similar conceptualmente a un PVC de ATM o Frame Relay.</li>
+              <li>❌ Menos flexible: la ruta está fijada administrativamente.</li>
+            </ul>
+          </div>
+
+          <div class="service svc">
+            <h4>📞 SVC (Switched Virtual Circuit)</h4>
+            <p><strong>Circuito Virtual Conmutado.</strong> Es el equivalente a una <strong>llamada telefónica</strong> en la red de datos.</p>
+            <ul>
+              <li>🟢 La red <strong>establece una conexión</strong> en un circuito virtual.</li>
+              <li>🟢 <strong>Transfiere paquetes</strong> a través de ese circuito.</li>
+              <li>🟢 <strong>Libera la conexión</strong> cuando la comunicación finaliza.</li>
+              <li>✅ Más flexible: se establece bajo demanda, solo cuando se necesita.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🔍 Características de los SVC en X.25</h3>
+        <div class="svc-details">
+          <ul>
+            <li>Define la existencia de un <strong>camino lógico y bidireccional</strong> desde un DTE a otro a través de la red X.25.</li>
+            <li>Físicamente, la conexión puede pasar por <strong>muchos nodos intermedios</strong> como DCE y PSE.</li>
+            <li><strong>Varios circuitos virtuales</strong> (SVCs y PVCs) pueden ser <strong>multiplexados en un solo circuito físico</strong> entre el DTE y el DCE.</li>
+          </ul>
+        </div>
+
+        <div class="multiplex-explanation">
+          <h4>🔀 Multiplexación de Circuitos Virtuales</h4>
+          <p>Una de las grandes ventajas de X.25 es que sobre un <strong>único enlace físico</strong> entre el DTE y el DCE se pueden establecer <strong>múltiples circuitos virtuales simultáneos</strong>, cada uno con un identificador diferente. Esto permite que un solo equipo se comunique con múltiples destinos al mismo tiempo usando una sola conexión física.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: X.25 - PROTOCOLOS -->
+      <div class="tab-panel" id="tab-x25-protocolos">
+        <h2>📡 Protocolos de la Arquitectura X.25</h2>
+        
+        <p>X.25 define protocolos en las <strong>tres primeras capas del modelo OSI</strong>: capa física, capa de enlace y capa de red.</p>
+
+        <h3>📋 Packet Layer Protocol (PLP) - Capa de Red</h3>
+        <div class="protocol-detail">
+          <p><strong>PLP (Packet Layer Protocol)</strong> trabaja al nivel de la <strong>capa de red</strong> del modelo OSI. Administra las conexiones entre el DCE y el DTE, gestionando el establecimiento y liberación de circuitos virtuales.</p>
+          
+          <h4>🔄 Cinco Modos de Operación de PLP</h4>
+          <div class="mode-grid">
+            <div class="mode">
+              <h4>📞 Call Setup</h4>
+              <p>Modo utilizado para <strong>establecer SVCs</strong> entre los DTE. Usa el esquema de direccionamiento <strong>X.121</strong> para identificar los extremos. Funciona en un circuito virtual mientras otros circuitos están en otros modos. <strong>Solo se utiliza en SVCs.</strong></p>
+            </div>
+            <div class="mode">
+              <h4>📤 Data Transfer</h4>
+              <p>Se utiliza para <strong>transferir datos</strong> entre dos DTEs sobre un circuito virtual. En este modo PLP realiza: <strong>segmentación y reensamble, bit padding, control de flujo y control de errores.</strong> Funciona en PVCs y SVCs.</p>
+            </div>
+            <div class="mode">
+              <h4>⏸️ Idle</h4>
+              <p>Se utiliza cuando un circuito virtual está <strong>establecido pero no hay transferencia de datos</strong> en ese momento. El circuito permanece listo para transmitir. <strong>Solo se utiliza para SVCs.</strong></p>
+            </div>
+            <div class="mode">
+              <h4>📴 Call Clearing</h4>
+              <p>Se utiliza para <strong>terminar la sesión</strong> entre DTEs y para finalizar los SVCs. Libera los recursos del circuito virtual. <strong>Solo se utiliza para SVCs.</strong></p>
+            </div>
+            <div class="mode">
+              <h4>🔄 Restarting</h4>
+              <p>Se utiliza para <strong>sincronizar la transmisión</strong> entre DTEs y DCEs. <strong>Afecta a todos los circuitos virtuales del DTE</strong> simultáneamente, reiniciando todas las comunicaciones activas.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>📡 Link Access Procedure Balanced (LAPB) - Capa de Enlace</h3>
+        <div class="protocol-detail">
+          <p><strong>LAPB (Procedimiento de Acceso al Enlace Balanceado)</strong> es un protocolo de <strong>capa de enlace de datos</strong> que administra la comunicación y el entramado de paquetes entre el DTE y el DCE. Es un protocolo <strong>orientado a bit</strong> que asegura que las tramas estén correctamente ordenadas y libres de error.</p>
+          
+          <h4>📨 Tres Tipos de Tramas LAPB</h4>
+          <div class="frame-types">
+            <div class="frame i-frame">
+              <h4>ℹ️ Tramas de Información (I-frame)</h4>
+              <p><strong>Llevan información de la capa superior</strong> (datos del usuario). Sus funciones son:</p>
+              <ul>
+                <li>🔀 <strong>Control de flujo:</strong> evita que el emisor sature al receptor.</li>
+                <li>✅ <strong>Detección y corrección de errores:</strong> mediante números de secuencia y retransmisiones.</li>
+                <li>🔢 <strong>Control de secuencia:</strong> asegura que las tramas se entreguen en orden.</li>
+              </ul>
+            </div>
+            <div class="frame s-frame">
+              <h4>🔍 Tramas de Supervisión (S-frame)</h4>
+              <p><strong>Llevan información de control</strong> (no datos de usuario). Sus funciones son:</p>
+              <ul>
+                <li>📩 <strong>Solicitud y suspensión</strong> de la transmisión.</li>
+                <li>📊 <strong>Reporte del estado</strong> de la comunicación.</li>
+                <li>✅ <strong>Reconocimiento (ACK)</strong> de recepción de I-frames.</li>
+              </ul>
+            </div>
+            <div class="frame u-frame">
+              <h4>🔢 Tramas No Numeradas (U-frame)</h4>
+              <p><strong>Llevan información de control</strong> para gestión del enlace. Sus funciones son:</p>
+              <ul>
+                <li>🔗 <strong>Establecimiento del enlace</strong> entre DTE y DCE.</li>
+                <li>🔌 <strong>Desconexión</strong> del enlace.</li>
+                <li>⚠️ <strong>Reporte de errores</strong> en la comunicación.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3>🔌 Protocolo X.21bis - Capa Física</h3>
+        <div class="protocol-detail">
+          <p><strong>X.21bis</strong> es el protocolo de la <strong>capa física</strong> de X.25. Define las interfaces eléctricas y mecánicas para la conexión física.</p>
+          <h4>Características:</h4>
+          <ul>
+            <li>⚡ <strong>Maneja la activación y desactivación</strong> del medio físico entre DTE y DCE.</li>
+            <li>🔗 Soporta <strong>conexiones punto a punto</strong>.</li>
+            <li>⚡ Velocidad de hasta <strong>19.2 kbps</strong>.</li>
+            <li>🔄 Transmisión <strong>síncrona full dúplex</strong> sobre 2 pares de cables.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: FRAME RELAY - INTRODUCCIÓN -->
+      <div class="tab-panel" id="tab-frame-intro">
+        <h2>🖼️ Frame Relay: Introducción y Evolución</h2>
+        
+        <div class="definition-card">
+          <p>En una red <strong>Frame Relay</strong> (conmutación de paquetes), los paquetes enviados son de <strong>longitud variable</strong> sobre LANs o WANs. Los paquetes de longitud variable, o <strong>tramas</strong>, son paquetes de datos que contienen información de direccionamiento adicional y gestión de errores necesaria para su distribución.</p>
+        </div>
+
+        <h3>🔍 Definición Técnica</h3>
+        <div class="card">
+          <p>Es un <strong>protocolo de enlace</strong>, que se define como un servicio portador RDSI (Red Digital de Servicios Integrados), de banda estrecha en modo de paquetes para el intercambio de datos y voz a alta velocidad. Permite la interconexión de redes de área local separadas geográficamente a un costo menor.</p>
+          <p>Trabaja solamente en los <strong>dos primeros niveles del modelo OSI</strong> (capa física y capa de enlace), y ha sido específicamente adaptado para velocidades de hasta <strong>2.048 Mbps (E1)</strong>, aunque nada le impide superarlas en implementaciones propietarias.</p>
+        </div>
+
+        <h3>📈 Evolución desde X.25 a Frame Relay</h3>
+        <div class="evolution-timeline">
+          <div class="evolution-step">
+            <h4>📠 X.25 (Años 70)</h4>
+            <p>Diseñado para líneas analógicas con <strong>alta tasa de errores</strong>. Incluye control de errores en cada "salto" de la red (entre cada par de nodos consecutivos). Esto genera un importante <strong>"overhead"</strong> (sobrecarga) que reduce la eficiencia.</p>
+            <ul>
+              <li>🐌 <strong>Lento</strong> pero extremadamente robusto.</li>
+              <li>📦 Paquetes pequeños para facilitar retransmisiones.</li>
+              <li>🔍 Verificación de errores en cada nodo intermedio.</li>
+            </ul>
+          </div>
+          <div class="evolution-arrow">→</div>
+          <div class="evolution-step">
+            <h4>🖼️ Frame Relay (Años 80-90)</h4>
+            <p>Diseñado para <strong>infraestructuras digitales modernas</strong> con muy baja tasa de error. <strong>Elimina la función de control de errores en los conmutadores intermedios</strong>, delegándola a los extremos.</p>
+            <ul>
+              <li>🚀 <strong>Mucho más rápido</strong> y eficiente.</li>
+              <li>📦 Tramas de longitud variable (hasta 8,250 bytes).</li>
+              <li>✅ Verificación de errores solo en los extremos (origen y destino).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>💡 La Clave de Frame Relay</h3>
+        <div class="highlight-box">
+          <p>Frame Relay <strong>maximiza la eficacia</strong> aprovechándose de las modernas infraestructuras digitales, de mucha mayor calidad y con muy bajo índice de error, y además permite <strong>mayor flujo de información</strong>. La clave para que Frame Relay sea aceptada con facilidad es su <strong>gran facilidad para ser incorporado a equipos ya existentes</strong>: encaminadores (routers), ordenadores, conmutadores, multiplexores, etc., y que estos pueden con Frame Relay realizar sus funciones de un modo más eficiente.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: FRAME RELAY - DETALLES -->
+      <div class="tab-panel" id="tab-frame-detalle">
+        <h2>🔍 Frame Relay: Características, Funcionamiento, Ventajas y Desventajas</h2>
+        
+        <h3>📋 Características Principales</h3>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h4>📡 Protocolo de Enlace</h4>
+            <p>Es un <strong>Protocolo de Enlace</strong> mediante circuito virtual permanente (PVC), muy usado para dar <strong>conexión directa a Internet</strong> a empresas.</p>
+          </div>
+          <div class="feature-item">
+            <h4>📦 Tramas de Tamaño Variable</h4>
+            <p>Sistema y tecnología de transmisión de datos que consiste en la conmutación de unidades de datos de tamaño variable, denominadas <strong>Tramas</strong>. La información transmitida puede oscilar entre <strong>1 y 8,250 bytes</strong> (por defecto 1,600 bytes).</p>
+          </div>
+          <div class="feature-item">
+            <h4>🏗️ Dos Primeros Niveles OSI</h4>
+            <p>Trabaja <strong>solamente con los dos primeros niveles OSI</strong>: nivel físico y nivel de enlace. Esto lo hace más simple y rápido que X.25 (que abarca hasta capa de red).</p>
+          </div>
+          <div class="feature-item">
+            <h4>🌐 Proveedor de Enlaces</h4>
+            <p>Es un protocolo que se emplea en determinadas oportunidades como <strong>proveedor de enlaces digitales de alta velocidad a Internet</strong> para empresas y organizaciones.</p>
+          </div>
+          <div class="feature-item">
+            <h4>🤝 Interoperabilidad</h4>
+            <p>Demuestra un <strong>alto grado de interoperabilidad</strong> entre diferentes fabricantes de equipos y redes, lo que facilita su adopción en entornos multi-proveedor.</p>
+          </div>
+          <div class="feature-item">
+            <h4>🌐 Red Pública como Red Privada</h4>
+            <p>Proporciona <strong>conexiones entre usuarios a través de una red pública</strong>, del mismo modo que lo haría una red privada con circuito punto a punto, pero a un costo mucho menor.</p>
+          </div>
+        </div>
+
+        <h3>⚙️ Funcionamiento de Frame Relay</h3>
+        <div class="workflow">
+          <div class="workflow-step">
+            <h4>🔌 1. Conexión del Usuario</h4>
+            <p>Lo primero es <strong>conectar a los usuarios</strong> mediante un acceso Frame Relay (puerto en el nodo de la red + línea de acceso).</p>
+          </div>
+          <div class="workflow-step">
+            <h4>🗺️ 2. Definición del CVP</h4>
+            <p>Después hay que <strong>definir en la red un CVP (Circuito Virtual Permanente)</strong> entre los accesos, que es el camino lógico para la transmisión de información.</p>
+          </div>
+          <div class="workflow-step">
+            <h4>🔀 3. Multiplexación Estadística</h4>
+            <p>Un usuario puede definir <strong>más de un CVP hasta distintos destinos</strong> a través de un único acceso Frame Relay. Este concepto se llama <strong>multiplexación estadística</strong>: un solo enlace físico transporta múltiples circuitos virtuales simultáneamente.</p>
+          </div>
+          <div class="workflow-step">
+            <h4>📨 4. Procesamiento de Tramas</h4>
+            <p>La red Frame Relay obtiene datos de los usuarios en las tramas recibidas, <strong>comprueba que sean válidas</strong>, y las enruta hacia el destino indicado en el <strong>DLCI (Data Link Connection Identifier)</strong> del campo "dirección". Si la red detecta errores en las tramas entrantes, o si el DLCI no es válido, la trama se <strong>descarta</strong>.</p>
+          </div>
+        </div>
+
+        <h3>🖼️ Estructura de una Trama Frame Relay</h3>
+        <div class="frame-structure">
+          <ul>
+            <li>🚩 <strong>Flag:</strong> Secuencia de comienzo y fin de trama (delimitadores).</li>
+            <li>📮 <strong>Campo de Dirección:</strong> Contiene el <strong>DLCI</strong> y otros bits de control de congestión.</li>
+            <li>📦 <strong>Campo de Información:</strong> Los datos del usuario. Permite transmitir un paquete entero de protocolos LAN.</li>
+          </ul>
+        </div>
+
+        <h3>✅ Ventajas de Frame Relay</h3>
+        <div class="advantages-detailed">
+          <div class="advantage">
+            <h4>🚀 Mayor Velocidad y Prestaciones</h4>
+            <p>Permite mayor velocidad que X.25 al eliminar la verificación de errores en cada nodo intermedio. Además, un mismo circuito sirve a varias conexiones, reduciendo el número de puertos y circuitos precisos, y por tanto el <strong>costo total</strong>.</p>
+          </div>
+          <div class="advantage">
+            <h4>💡 Eficiencia Maximizada</h4>
+            <p>Maximiza la eficacia aprovechándose de las modernas infraestructuras digitales, de mucha mayor calidad y con muy bajos índices de errores, permitiendo <strong>mayor flujo de información</strong>.</p>
+          </div>
+          <div class="advantage">
+            <h4>💰 Reemplazo de Líneas Privadas</h4>
+            <p>Reemplaza las costosas <strong>líneas privadas punto a punto</strong> por un solo enlace a la red pública Frame Relay, reduciendo drásticamente los costos de conectividad.</p>
+          </div>
+          <div class="advantage">
+            <h4>💻 Implementación por Software</h4>
+            <p>Puede ser <strong>implementado en software</strong> (por ejemplo, en un encaminador/router), y por tanto puede ser <strong>mucho más barato</strong> que soluciones hardware dedicadas.</p>
+          </div>
+          <div class="advantage">
+            <h4>⚡ Red Rápida</h4>
+            <p>En comparación con X.25, Frame Relay es significativamente más rápido debido a su menor sobrecarga de procesamiento en los nodos intermedios.</p>
+          </div>
+        </div>
+
+        <h3>❌ Desventajas de Frame Relay</h3>
+        <div class="disadvantages-detailed">
+          <div class="disadvantage">
+            <h4>🐌 Velocidad Limitada</h4>
+            <p>Solo ha sido definido para velocidades de hasta <strong>1.544/2.048 Mbps (T1/E1)</strong>. Para velocidades superiores se requieren otras tecnologías como ATM.</p>
+          </div>
+          <div class="disadvantage">
+            <h4>🏚️ Tecnología Considerada Antigua</h4>
+            <p>Sigue siendo una tecnología considerada antigua hoy en día, ya que no inventa nuevos protocolos ni mejora los dispositivos de la red; sino que se limita a <strong>eliminar parte de la carga de protocolo y funciones del X.25</strong>.</p>
+          </div>
+          <div class="disadvantage">
+            <h4>🔩 No es una Red Integrada</h4>
+            <p>Frame Relay fue diseñado principalmente para datos. <strong>No es una red integrada</strong> que maneje de forma nativa y óptima voz, video y datos simultáneamente (a diferencia de ATM).</p>
+          </div>
+          <div class="disadvantage">
+            <h4>📱 No Soporta Aplicaciones Sencillas</h4>
+            <p><strong>No soporta aplicaciones sencillas al mismo tiempo</strong>, al menos de forma estándar. Está optimizado para ráfagas de datos, no para tráfico constante.</p>
+          </div>
+          <div class="disadvantage">
+            <h4>⚠️ Vulnerabilidad en la Conexión</h4>
+            <p>Dado que Frame Relay está <strong>orientado a conexión</strong>, las redes orientadas a conexión son <strong>susceptibles de perderla</strong> si el enlace entre el nodo conmutador de dos redes falla. La recuperación puede no ser automática.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
+    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
+    <nav class="footer-nav">
+      <a href="pagina2.html">← Anterior: Paquetes y ATM</a>
+      <span>Página 3 de 4</span>
+      <a href="pagina4.html">Siguiente: ADSL y Tecnologías →</a>
+    </nav>
+  </footer>
+
+  <script src="paginajs.js" defer></script>
+</body>
+</html>

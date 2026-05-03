@@ -3,176 +3,334 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Redes de Conmutación · UMSS</title>
-  <!-- Vincula el archivo de estilos CSS -->
-  <link rel="stylesheet" href="style.css">
+  <title>Redes de Conmutación · Parte 1</title>
+  <link rel="stylesheet" href="paginacss.css">
 </head>
 <body>
 
-  <!-- ENCABEZADO PRINCIPAL -->
   <header>
     <h1>📡 Redes de Conmutación</h1>
-    <p class="subtitulo">Resumen completo desde circuitos hasta ADSL — todo lo que necesitas saber.</p>
+    <p class="subtitulo">Parte 1: Introducción y Conmutación de Circuitos</p>
+    <nav class="main-nav">
+      <a href="index.html" class="active">1: Intro-Circuitos</a>
+      <a href="pagina2.html">2: Paquetes-ATM</a>
+      <a href="pagina3.html">3: Frame Relay-X.25</a>
+      <a href="pagina4.html">4: ADSL-Extras</a>
+    </nav>
   </header>
 
-  <!-- SISTEMA DE PESTAÑAS (TABS) -->
   <div class="tabs-container">
-    <!-- Botones de navegación -->
     <div class="tabs-nav">
       <button class="tab-btn active" data-tab="tab-intro">🌐 Introducción</button>
-      <button class="tab-btn" data-tab="tab-circuitos">📞 Circuitos</button>
-      <button class="tab-btn" data-tab="tab-paquetes">📦 Paquetes</button>
-      <button class="tab-btn" data-tab="tab-atm">⚛️ ATM</button>
-      <button class="tab-btn" data-tab="tab-frame">🖼️ Frame Relay</button>
-      <button class="tab-btn" data-tab="tab-extras">➕ Extras</button>
+      <button class="tab-btn" data-tab="tab-crisis">⚠️ Crisis del Software</button>
+      <button class="tab-btn" data-tab="tab-ciclo">🔄 Ciclo de Vida</button>
+      <button class="tab-btn" data-tab="tab-calidad">⭐ Atributos de Calidad</button>
+      <button class="tab-btn" data-tab="tab-analisis">🔍 Análisis Previo</button>
+      <button class="tab-btn" data-tab="tab-requerimientos">📋 Requerimientos</button>
     </div>
 
-    <!-- CONTENIDO DE LAS PESTAÑAS -->
     <div class="tabs-content">
 
-      <!-- PESTAÑA: INTRODUCCIÓN -->
+      <!-- PESTAÑA: INTRODUCCIÓN A REDES DE CONMUTACIÓN -->
       <div class="tab-panel active" id="tab-intro">
-        <h2>🌐 ¿Qué es la Conmutación?</h2>
-        <p>La <strong>conmutación</strong> es la conexión que realizan los nodos en distintos lugares y distancias para lograr un camino apropiado entre dos usuarios de una red de telecomunicaciones. Su objetivo principal es <strong>descongestionar</strong> la red, disminuir el tráfico y aumentar el ancho de banda disponible.</p>
+        <h2>🌐 ¿Qué es la Conmutación en Telecomunicaciones?</h2>
         
+        <div class="definition-card">
+          <p><strong>Conmutación</strong> es la conexión que realizan los diferentes nodos que existen en distintos lugares y distancias para lograr un camino apropiado para conectar dos usuarios de una red de telecomunicaciones.</p>
+          <p>La conmutación permite la <strong>descongestión</strong> entre los usuarios de la red, disminuyendo el tráfico y aumentando el ancho de banda disponible.</p>
+        </div>
+
+        <h3>📚 Conceptos Fundamentales</h3>
         <div class="card-container">
           <div class="card">
-            <h3>📜 Arquitecturas Básicas</h3>
-            <p>Existen dos grandes arquitecturas de comunicación:</p>
-            <ul>
-              <li><strong>🔌 Conmutación de Circuitos:</strong> Ideal para voz tradicional.</li>
-              <li><strong>📦 Conmutación de Paquetes:</strong> La base de Internet y redes modernas.</li>
-            </ul>
+            <h4>🔌 ¿Qué es una Red de Conmutación?</h4>
+            <p>Es una red de telecomunicaciones especializada en el transporte de diferentes tipos de tráfico (voz, datos, video) mediante el establecimiento de caminos o circuitos entre los usuarios.</p>
           </div>
           <div class="card">
-            <h3>📈 Evolución a Telefonía IP</h3>
-            <p>Las empresas migraron de la red telefónica tradicional (PSTN) a soluciones de <strong>Telefonía IP de extremo a extremo</strong>, integrando voz, video y datos sobre una misma red.</p>
+            <h4>📞 Red de Conmutación de Circuitos</h4>
+            <p>Especializada en el transporte de tráfico de voz tradicional. Ejemplo clásico: la red telefónica pública conmutada (PSTN).</p>
           </div>
+          <div class="card">
+            <h4>🌍 Internet como Red de Conmutación</h4>
+            <p>Internet es el ejemplo más grande de red de conmutación de paquetes, donde la información se divide en pequeños bloques que viajan independientemente.</p>
+          </div>
+        </div>
+
+        <h3>🏢 Evolución de la Voz Empresarial hacia Telefonía IP</h3>
+        <p>Las empresas modernas han migrado desde la telefonía tradicional (PSTN) hacia soluciones de <strong>Telefonía IP de extremo a extremo</strong>. Esto implica:</p>
+        <ul>
+          <li>Integración de voz, datos y video sobre una misma infraestructura IP.</li>
+          <li>Uso de teléfonos IP en oficinas locales y remotas.</li>
+          <li>Implementación de centrales telefónicas virtuales (como 3CX en la nube).</li>
+          <li>Reducción de costos al eliminar redes separadas para voz y datos.</li>
+        </ul>
+
+        <div class="info-box">
+          <p>💡 <strong>Dato clave:</strong> Básicamente, existen dos tipos de arquitecturas de redes de comunicación: <strong>conmutación de circuitos</strong> y <strong>conmutación de paquetes</strong>. Todo el estudio de redes modernas se basa en entender estas dos filosofías.</p>
         </div>
       </div>
 
-      <!-- PESTAÑA: CONMUTACIÓN DE CIRCUITOS -->
-      <div class="tab-panel" id="tab-circuitos">
-        <h2>🔌 Conmutación de Circuitos</h2>
-        <p>En este método, se establece un <strong>circuito físico dedicado</strong> y exclusivo entre los extremos que se mantiene durante toda la comunicación. Es el caso de la telefonía convencional.</p>
-
-        <div class="columns">
-          <div class="col ventajas">
-            <h3>✅ Ventajas</h3>
-            <ul>
-              <li><strong>Transmisión en tiempo real:</strong> Ideal para voz y video sin cortes.</li>
-              <li><strong>Sin contención:</strong> Una vez establecido, las partes se comunican a la máxima velocidad del medio.</li>
-              <li><strong>Circuito fijo:</strong> No hay que calcular rutas en cada nodo intermedio, lo que simplifica la gestión.</li>
-            </ul>
-          </div>
-          <div class="col desventajas">
-            <h3>❌ Desventajas</h3>
-            <ul>
-              <li><strong>Retraso inicial:</strong> Se necesita tiempo para establecer la conexión.</li>
-              <li><strong>Acaparamiento de recursos:</strong> El circuito se desperdicia en los silencios de la conversación.</li>
-              <li><strong>Poco tolerante a fallos:</strong> Si un nodo falla, todo el circuito se cae y hay que reconectarlo.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- PESTAÑA: CONMUTACIÓN DE PAQUETES -->
-      <div class="tab-panel" id="tab-paquetes">
-        <h2>📦 Conmutación de Paquetes</h2>
-        <p>La información se divide en pequeños bloques llamados <strong>paquetes</strong>. Cada paquete contiene datos y una cabecera con direcciones de origen y destino. Los nodos los almacenan y reenvían dinámicamente. Es el método más usado hoy en día (ej. Internet).</p>
+      <!-- PESTAÑA: CRISIS DEL SOFTWARE Y SURGIMIENTO DE LA INGENIERÍA DE SOFTWARE -->
+      <div class="tab-panel" id="tab-crisis">
+        <h2>⚠️ La Crisis del Software y el Nacimiento de la Ingeniería de Software</h2>
         
-        <div class="card-container three">
-          <div class="card">
-            <h3>🔄 Modos</h3>
-            <p><strong>Circuito Virtual:</strong> Todos los paquetes siguen la misma ruta, asegurando el orden.</p>
-            <p><strong>Datagrama:</strong> Cada paquete se encamina de forma independiente, pudiendo llegar en desorden.</p>
-          </div>
-          <div class="card">
-            <h3>✅ Ventajas Clave</h3>
+        <div class="definition-card">
+          <p>La <strong>crisis del software</strong> surgió porque los proyectos de desarrollo se volvieron extremadamente complejos y los equipos no contaban con metodologías claras para manejarlos. La <strong>Ingeniería de Software</strong> nació como respuesta directa a esta crisis.</p>
+        </div>
+
+        <h3>🔴 Manifestaciones de la Crisis del Software</h3>
+        <div class="problem-grid">
+          <div class="problem-item">⏰ Atrasos constantes en los plazos de entrega acordados con el cliente.</div>
+          <div class="problem-item">🐛 Mala calidad en el código fuente, resultando en gran cantidad de errores (bugs).</div>
+          <div class="problem-item">📄 Falta total o parcial de documentación del sistema desarrollado.</div>
+          <div class="problem-item">📅 Ausencia de planificación previa al inicio del desarrollo.</div>
+          <div class="problem-item">👥 Mal trabajo en equipo o funcionamiento deficiente del equipo de desarrollo.</div>
+          <div class="problem-item">💸 Gasto excesivo de tiempo y dinero, superando los presupuestos estimados.</div>
+        </div>
+
+        <div class="objective-box">
+          <h4>🎯 Objetivo de la Ingeniería de Software</h4>
+          <p><strong>Desarrollar software de calidad dentro del presupuesto y tiempo estimados</strong>, atacando directamente las causas que provocaron la crisis del software.</p>
+        </div>
+
+        <h3>💡 Para Recordar</h3>
+        <p>La Ingeniería de Software no es solo programar, es todo el proceso sistemático y disciplinado que abarca desde la concepción de la idea hasta el mantenimiento del producto final, asegurando que se cumplan los atributos de calidad esperados.</p>
+      </div>
+
+      <!-- PESTAÑA: CICLO DE VIDA DEL SOFTWARE -->
+      <div class="tab-panel" id="tab-ciclo">
+        <h2>🔄 Ciclo de Vida del Software</h2>
+        <p>Son las <strong>3 grandes etapas</strong> que describen todo el proceso de creación y mantenimiento de un software, desde su concepción hasta su retiro.</p>
+
+        <div class="lifecycle-container">
+          <div class="lifecycle-stage definicion">
+            <h3>📋 Etapa de Definición (Análisis Previo)</h3>
+            <p>Aquí se <strong>"gesta"</strong> el software. Se plantean las razones para crearlo (inspiración, necesidad, petición del cliente). Se define <strong>qué</strong> se quiere construir en forma de requerimientos.</p>
+            <p>También se conoce como la etapa de <strong>elicitación</strong> (descubrir requerimientos).</p>
+            <h4>Incluye:</h4>
             <ul>
-              <li>Compartición de recursos entre usuarios.</li>
-              <li>Mayor flexibilidad y rentabilidad.</li>
-              <li>Si un paquete falla, solo se reenvía ese, no toda la información.</li>
+              <li>📊 Modelo de Negocio</li>
+              <li>🎯 Definición del Problema</li>
+              <li>📋 Requerimientos (RF y RNF)</li>
+              <li>📏 Estimación</li>
+              <li>🔍 Análisis de Factibilidad</li>
+              <li>📅 Planificación</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>❌ Desventajas</h3>
+
+          <div class="lifecycle-stage desarrollo">
+            <h3>⚙️ Etapa de Desarrollo</h3>
+            <p>Etapa destinada a realizar el <strong>desarrollo o implementación</strong> del software mediante metodologías establecidas.</p>
+            <h4>Pasos internos:</h4>
             <ul>
-              <li>Mayor complejidad en los equipos de conmutación.</li>
-              <li>Posible duplicidad de paquetes por retransmisiones.</li>
+              <li>📝 Análisis detallado</li>
+              <li>💻 Desarrollo y codificación</li>
+              <li>🚀 Implementación</li>
+              <li>🧪 Pruebas (Testing)</li>
+            </ul>
+            <p><strong>Tecnologías utilizadas:</strong> Git/GitHub, Next.js, TailwindCSS, MongoDB (ejemplo del proyecto).</p>
+          </div>
+
+          <div class="lifecycle-stage mantenimiento">
+            <h3>🔧 Etapa de Mantenimiento</h3>
+            <p>La última etapa del ciclo de vida. Busca <strong>prolongar la vida útil</strong> del software recién lanzado.</p>
+            <h4>3 Tipos de Mantenimiento:</h4>
+            <ul>
+              <li><strong>Preventivo:</strong> Corregir errores potenciales antes de que ocurran.</li>
+              <li><strong>Correctivo:</strong> Corrección de errores actuales detectados.</li>
+              <li><strong>Perfectivo:</strong> Agregar nuevas funcionalidades solicitadas por el cliente.</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- PESTAÑA: REDES ATM -->
-      <div class="tab-panel" id="tab-atm">
-        <h2>⚛️ Redes ATM (Asynchronous Transfer Mode)</h2>
-        <p>Tecnología de red troncal de alta capacidad que transmite información en paquetes cortos de longitud constante llamados <strong>celdas</strong> (53 bytes). Usa canales y trayectos virtuales para enrutar. Soporta velocidades de 155 Mbps (OC-3) hasta casi 10 Gbps (OC-192).</p>
-        
-        <h3>📐 Modelo de Referencia ATM</h3>
-        <p>Se corresponde con la capa física y parte de la de enlace del modelo OSI. Se compone de planos (Control, Usuario, Gestión) y capas (Física, ATM, Adaptación AAL, Superiores).</p>
-        
-        <h3>🧱 Estructura de la Celda ATM</h3>
-        <p>Cada celda consta de 53 octetos: 5 de cabecera y 48 de datos (payload). Los formatos de cabecera son <strong>UNI</strong> (Usuario-Red) y <strong>NNI</strong> (Red-Red).</p>
+      <!-- PESTAÑA: ATRIBUTOS DE CALIDAD DEL SOFTWARE -->
+      <div class="tab-panel" id="tab-calidad">
+        <h2>⭐ Atributos de Calidad del Software</h2>
+        <p>Aspectos indispensables para considerar que un software funcional es de <strong>calidad</strong>. No todos tienen que estar presentes obligatoriamente (por ejemplo, la seguridad no siempre aplica en todos los contextos).</p>
 
-        <div class="table-responsive">
-          <table>
-            <thead><tr><th>Campo</th><th>Bits</th><th>Función Principal</th></tr></thead>
-            <tbody>
-              <tr><td>GFC</td><td>4</td><td>Control de Flujo Genérico (prácticamente no usado, extiende VPI en NNI).</td></tr>
-              <tr><td>VPI / VCI</td><td>8 / 16</td><td>Identificadores de Trayecto y Canal Virtual. Definen el enrutamiento.</td></tr>
-              <tr><td>PTI</td><td>3</td><td>Identifica el tipo de carga (datos de usuario o control) e indica congestión.</td></tr>
-              <tr><td>CLP</td><td>1</td><td>Prioridad de descarte en caso de congestión (Cell Loss Priority).</td></tr>
-              <tr><td>HEC</td><td>8</td><td>Corrección de errores de la cabecera.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- PESTAÑA: FRAME RELAY Y MÁS -->
-      <div class="tab-panel" id="tab-frame">
-        <h2>🖼️ Frame Relay</h2>
-        <p>Protocolo de enlace para WAN que usa paquetes de <strong>longitud variable</strong>. Simplifica el proceso de X.25 eliminando controles de error "salto a salto", aprovechando las modernas infraestructuras de baja tasa de error. Es orientado a conexión y define Circuitos Virtuales Permanentes (PVC). Soporta velocidades de hasta 2.048 Mbps (E1).</p>
-
-        <h3>📊 Comparativa con X.25</h3>
-        <div class="table-responsive">
-          <table>
-            <thead><tr><th>Característica</th><th>X.25</th><th>Frame Relay</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Época / Medio</strong></td><td>Líneas analógicas con alta tasa de error.</td><td>Infraestructura digital moderna y fiable.</td></tr>
-              <tr><td><strong>Control de Errores</strong></td><td>Abundante, entre cada nodo, lo que genera "overhead".</td><td>Mínimo, delegado a los extremos. Mayor eficiencia.</td></tr>
-              <tr><td><strong>Velocidad</strong></td><td>Baja, pensada para retransmisiones constantes.</td><td>Alta, para mayor flujo de información.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- PESTAÑA: EXTRAS (SMDS, ADSL) -->
-      <div class="tab-panel" id="tab-extras">
-        <h2>➕ Tecnologías Adicionales</h2>
-        <div class="card-container">
-          <div class="card">
-            <h3>🏙️ SMDS</h3>
-            <p>Servicio de datos conmutado multimegabits. Red metropolitana (MAN), sin conexión, de alta velocidad y basada en celdas de 53 bytes. Diseñada para interconectar LANs con velocidades DS-1, DS-3 y SONET.</p>
+        <div class="quality-grid">
+          <div class="quality-card">
+            <h3>01 Correctitud</h3>
+            <p>El programa debe hacer <strong>correctamente</strong> lo que debería hacer, sin errores de lógica. Es el atributo más fundamental.</p>
           </div>
-          <div class="card">
-            <h3>💻 ADSL</h3>
-            <p>Línea de Abonado Digital Asimétrica. Usa el par de cobre de la PSTN. La velocidad de bajada (hasta 24 Mbps con ADSL2+) es mayor que la de subida. Componentes clave: Modem ATU-R, DSLAM en central, y Splitter para separar voz y datos.</p>
+          <div class="quality-card">
+            <h3>02 Usabilidad</h3>
+            <p>Debe ser <strong>fácil de usar</strong> para los usuarios finales. La interfaz debe ser intuitiva y amigable.</p>
+          </div>
+          <div class="quality-card">
+            <h3>03 Seguridad</h3>
+            <p>No siempre obligatoria, pero <strong>necesaria en sistemas con datos sensibles</strong> como banca, salud o información personal.</p>
+          </div>
+          <div class="quality-card">
+            <h3>04 Mantenibilidad</h3>
+            <p>El código debe ser <strong>fácil de modificar, corregir y extender</strong> en el futuro sin introducir nuevos errores.</p>
+          </div>
+          <div class="quality-card">
+            <h3>05 Confiabilidad</h3>
+            <p>El sistema debe funcionar <strong>consistentemente sin fallar</strong> cuando se le necesita, en cualquier circunstancia.</p>
+          </div>
+          <div class="quality-card">
+            <h3>06 UX / User Experience</h3>
+            <p>Diseño de interfaces e interacción para <strong>maximizar la usabilidad</strong> del sistema y la satisfacción del usuario.</p>
           </div>
         </div>
-        <p><em>Estas tecnologías complementan el ecosistema de conmutación, extendiendo las capacidades de la red hacia el usuario final (ADSL) o interconectando redes de área local a alta velocidad (SMDS).</em></p>
       </div>
+
+      <!-- PESTAÑA: ANÁLISIS PREVIO (ARTEFACTOS) -->
+      <div class="tab-panel" id="tab-analisis">
+        <h2>🔍 Análisis Previo (Artefactos)</h2>
+        
+        <h3>📊 Modelo de Negocio</h3>
+        <div class="card">
+          <p><strong>Diagnóstico de la situación actual.</strong> Es el primer punto de partida de cualquier proyecto de software.</p>
+          <ul>
+            <li>Se analiza el entorno actual y se visualiza el potencial producto.</li>
+            <li><strong>No se debe intervenir el sistema actual todavía</strong>, solo observar y describir la forma de trabajo.</li>
+          </ul>
+          <div class="tip-box">
+            <p>🔑 <strong>Clave:</strong> Observar cómo trabajan los usuarios antes de proponer soluciones tecnológicas.</p>
+          </div>
+        </div>
+
+        <h3>🎯 Definición del Problema</h3>
+        <div class="card">
+          <p>Saber <strong>identificar, describir y entender</strong> el problema o las dificultades a afrontar.</p>
+          <ul>
+            <li>Se usan técnicas como el <strong>Customer Pain</strong> (molestias del cliente).</li>
+            <li>Cada problema identificado debe ser <strong>específico y atómico</strong>.</li>
+          </ul>
+          <div class="example-box">
+            <p>📌 <strong>Ejemplo en Moodle:</strong> "Falta de auto-corrección ortográfica" → problema puntual con posibles soluciones concretas.</p>
+          </div>
+        </div>
+
+        <h3>📋 Requerimientos</h3>
+        <div class="card">
+          <p>Modelar y plasmar las posibles características o formas de <strong>solucionar el problema</strong> con el sistema.</p>
+          <p>Se describen las funcionalidades o características que el programa tendrá que proveer.</p>
+          <div class="result-box">
+            <p>📄 <strong>Resultado:</strong> Documento de Especificación de Requerimientos (Backlog).</p>
+          </div>
+        </div>
+
+        <h3>🔎 Técnicas de Recolección de Información</h3>
+        <div class="techniques-grid">
+          <div class="technique">👀 <strong>Observación:</strong> Ir al lugar y ver cómo trabajan los usuarios en su entorno natural.</div>
+          <div class="technique">🎤 <strong>Entrevistas:</strong> Pueden ser dirigidas (estructuradas) o no dirigidas (abiertas).</div>
+          <div class="technique">📝 <strong>Cuestionarios:</strong> Más casual y permite llegar a más personas simultáneamente.</div>
+          <div class="technique">🔬 <strong>Sistemas similares:</strong> Analizar productos paralelos como referencia de funcionalidades.</div>
+        </div>
+        <div class="reminder-box">
+          <p>⚠️ <strong>Recuerda:</strong> Hay que identificar tanto <strong>usuarios directos</strong> (los que usan el sistema) como <strong>usuarios indirectos</strong> (los que reciben los resultados del sistema).</p>
+        </div>
+
+        <h3>⚠️ Técnica Especial: "Dar la Vuelta al Calcetín"</h3>
+        <div class="special-technique">
+          <p>Consiste en preguntarse: <strong>¿Qué puede ir mal?</strong></p>
+          <ol>
+            <li>Hacer un listado de todo lo que podría resultar mal.</li>
+            <li>Identificar soluciones o acciones de prevención para cada posible problema.</li>
+            <li>Plantear términos y condiciones de seguridad basados en esos riesgos.</li>
+          </ol>
+          <p>Con esa lista de problemas + soluciones, <strong>ya se está haciendo ingeniería de requerimientos</strong>.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: REQUERIMIENTOS FUNCIONALES Y NO FUNCIONALES -->
+      <div class="tab-panel" id="tab-requerimientos">
+        <h2>📋 Requerimientos: Funcionales (RF) y No Funcionales (RNF)</h2>
+        
+        <h3>🔑 Diferencia Conceptual Clave</h3>
+        <div class="concept-grid">
+          <div class="concept">
+            <h4>Feature (Característica)</h4>
+            <p>Es lo que <strong>TIENE</strong> el sistema. Una propiedad o capacidad inherente del software.</p>
+          </div>
+          <div class="concept">
+            <h4>Requerimiento</h4>
+            <p>Característica o restricción del <strong>sistema propuesto</strong>. Lo que el sistema DEBE hacer o CÓMO debe ser.</p>
+          </div>
+        </div>
+        <p>El <strong>sistema actual</strong> es el CONTEXTO; el <strong>sistema propuesto</strong> es la SOLUCIÓN.</p>
+
+        <h3>✅ Requerimientos Funcionales (RF)</h3>
+        <div class="rf-box">
+          <p>Identificadores o descriptores de <strong>funcionalidades y servicios</strong> del sistema. Se refieren a <strong>acciones disponibles para el usuario</strong>.</p>
+          <p><strong>Se escriben como un verbo</strong> (acción del sistema), generalmente en forma imperativa.</p>
+          <div class="example-inline">
+            <p>📌 <strong>Ejemplos en Word:</strong></p>
+            <ul>
+              <li><strong>RF1:</strong> Imprimir Documento</li>
+              <li><strong>RF2:</strong> Insertar Imagen</li>
+              <li><strong>RF3:</strong> Guardar Archivo</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🚫 Requerimientos No Funcionales (RNF)</h3>
+        <div class="rnf-box">
+          <p>Identifican <strong>restricciones</strong> sobre el sistema propuesto. Se definen desde la <strong>perspectiva de calidad</strong> (usuario, contexto, etc.).</p>
+          <p><strong>Se escriben como descripciones más completas</strong>, no como simples verbos.</p>
+          <div class="example-inline">
+            <p>📌 <strong>Ejemplo en Word:</strong></p>
+            <p><strong>RNF1:</strong> El editor deberá realizar una corrección automática de ortografía mientras el usuario escribe.</p>
+          </div>
+        </div>
+
+        <h3>✅ Todo Requerimiento Debe Ser:</h3>
+        <div class="requirement-properties">
+          <div class="property">
+            <span class="badge blue">Claro</span>
+            <p>No ambiguo. Debe decir <strong>exactamente</strong> qué es lo que se quiere. Es lo que lo distingue de un atributo de calidad.</p>
+          </div>
+          <div class="property">
+            <span class="badge green">Completo</span>
+            <p>Debe tener descripciones <strong>sólidas y fuertes</strong> — no pueden faltar detalles importantes para su implementación.</p>
+          </div>
+          <div class="property">
+            <span class="badge yellow">Realizable</span>
+            <p>Los requerimientos deben <strong>poder hacerse eventualmente</strong> — no deben ser imposibles de implementar con la tecnología disponible.</p>
+          </div>
+        </div>
+
+        <h3>🌐 Dimensiones de los RNF (Perspectivas de Calidad)</h3>
+        <div class="dimensions-grid">
+          <div class="dimension">
+            <h4>🌍 Contexto</h4>
+            <p>¿Qué está haciendo el usuario con el programa? Cómo se pueden implementar funcionalidades en 2do plano para facilitar el uso. Ej: autocompletado en un editor.</p>
+          </div>
+          <div class="dimension">
+            <h4>👤 Cliente</h4>
+            <p>Visión del cliente — qué busca con el desarrollo de ese sistema, respetando todo lo que desea obtener.</p>
+          </div>
+          <div class="dimension">
+            <h4>💎 Calidad</h4>
+            <p>Consideración de los atributos de calidad: seguridad, correctitud, mantenibilidad, confiabilidad, etc.</p>
+          </div>
+          <div class="dimension">
+            <h4>🖥️ Usabilidad</h4>
+            <p>Diseño del propio sistema: colores, tipografía, tamaño de botones, tamaño de letra, disposición de elementos, etc.</p>
+          </div>
+          <div class="dimension">
+            <h4>🔧 Hardware/Software</h4>
+            <p>Especificaciones de equipos usados y tecnologías de desarrollo de software requeridas para el funcionamiento.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- PIE DE PÁGINA -->
   <footer>
-    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
-    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Ingeniería de Software</p>
+    <p class="tagline">"Esfuérzate y sé valiente" 💪</p>
+    <nav class="footer-nav">
+      <span>Página 1 de 3</span>
+      <a href="pagina2.html">Siguiente: Scrum y Planificación →</a>
+    </nav>
   </footer>
 
-  <!-- Vincula el archivo de lógica JavaScript -->
-  <script src="script.js" defer></script>
+  <script src="paginajs.js" defer></script>
 </body>
 </html>

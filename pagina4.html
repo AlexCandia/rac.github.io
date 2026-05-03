@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Redes de Conmutación · Parte 4</title>
+  <link rel="stylesheet" href="paginacss.css">
+</head>
+<body>
+
+  <header>
+    <h1>📡 Redes de Conmutación</h1>
+    <p class="subtitulo">Parte 4: Redes ADSL y Cuadro Integrador</p>
+    <nav class="main-nav">
+      <a href="index.html">1: Intro-Circuitos</a>
+      <a href="pagina2.html">2: Paquetes-ATM</a>
+      <a href="pagina3.html">3: Frame Relay-X.25</a>
+      <a href="pagina4.html" class="active">4: ADSL-Extras</a>
+    </nav>
+  </header>
+
+  <div class="tabs-container">
+    <div class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-adsl-intro">💻 ADSL: Introducción</button>
+      <button class="tab-btn" data-tab="tab-adsl-estandares">📊 ADSL: Estándares y Velocidades</button>
+      <button class="tab-btn" data-tab="tab-adsl-componentes">🔌 ADSL: Componentes</button>
+      <button class="tab-btn" data-tab="tab-adsl-funciona">⚙️ ADSL: Funcionamiento y ATM</button>
+      <button class="tab-btn" data-tab="tab-cuadro">📊 Cuadro Comparativo Final</button>
+    </div>
+
+    <div class="tabs-content">
+
+      <!-- PESTAÑA: ADSL - INTRODUCCIÓN -->
+      <div class="tab-panel active" id="tab-adsl-intro">
+        <h2>💻 Redes ADSL: Introducción</h2>
+        
+        <div class="definition-card">
+          <p><strong>ADSL (Asymmetric Digital Subscriber Line)</strong> es una tecnología de acceso a Internet de banda ancha que utiliza la línea telefónica convencional (par de cobre) para transmitir datos a alta velocidad.</p>
+        </div>
+
+        <h3>🔤 Significado del Acrónimo ADSL</h3>
+        <div class="acronym-breakdown">
+          <div class="acronym-part">
+            <h4><span class="letter">A</span> - Asymmetric (Asimétrico)</h4>
+            <p>Los datos pueden fluir <strong>más rápido en una dirección que en otra</strong>. La transmisión de datos es más rápida en la <strong>bajada (descarga)</strong> que en la <strong>subida (carga)</strong> del abonado. Esto se debe a que la mayoría de los usuarios consumen más contenido del que generan (navegación web, streaming, descargas).</p>
+            <p><strong>Concepto clave:</strong> Downstream (bajada) ≠ Upstream (subida). La velocidad de bajada es típicamente 8-10 veces mayor que la de subida.</p>
+          </div>
+
+          <div class="acronym-part">
+            <h4><span class="letter">D</span> - Digital (Digital)</h4>
+            <p><strong>No se transfiere ningún tipo de comunicación por métodos analógicos.</strong> Todos los datos son puramente digitales. Solo al final del proceso son modulados para llevarlos sobre el medio de transmisión (el par de cobre).</p>
+            <p>Esto contrasta con los módems telefónicos tradicionales (56k) que usaban señales analógicas para transmitir datos, con las limitaciones de velocidad que eso implicaba.</p>
+          </div>
+
+          <div class="acronym-part">
+            <h4><span class="letter">SL</span> - Subscriber Line (Línea de Abonado)</h4>
+            <p>Los datos son llevados sobre un <strong>par trenzado de cobre</strong> de una red <strong>PSTN (Public Switched Telephone Network)</strong>, es decir, la red telefónica pública convencional que llega a prácticamente todos los hogares y empresas.</p>
+            <p>Esta es una de las grandes ventajas de ADSL: <strong>aprovecha la infraestructura existente</strong> de cableado telefónico, que ya está desplegada masivamente, sin necesidad de tender nuevos cables.</p>
+          </div>
+        </div>
+
+        <h3>💡 La Idea Revolucionaria de ADSL</h3>
+        <div class="highlight-box">
+          <p>ADSL permite usar <strong>simultáneamente</strong> el mismo par de cobre para:</p>
+          <ol>
+            <li>📞 <strong>Llamadas telefónicas tradicionales</strong> (voz analógica, frecuencias bajas: 0-4 kHz).</li>
+            <li>🌐 <strong>Conexión a Internet de alta velocidad</strong> (datos digitales, frecuencias altas: 25 kHz - 1.1 MHz).</li>
+          </ol>
+          <p>Esto es posible porque utiliza <strong>diferentes bandas de frecuencia</strong> para voz y datos, separadas por un filtro llamado <strong>splitter</strong>. Así, puedes hablar por teléfono y navegar por Internet al mismo tiempo sin interferencias.</p>
+        </div>
+
+        <h3>📡 ADSL en el Contexto de las Redes de Conmutación</h3>
+        <div class="card">
+          <p>ADSL es una tecnología de <strong>acceso</strong>, no de núcleo. Mientras que ATM, Frame Relay y X.25 operan en el corazón de la red (backbone), ADSL opera en el <strong>bucle local</strong> (la última milla), conectando al usuario final con la central del proveedor de servicios.</p>
+          <p>Sin embargo, ADSL utiliza <strong>ATM como tecnología de transporte subyacente</strong> (ATM over ADSL), específicamente el estándar <strong>AAL5</strong> para la adaptación de datos. Esto vincula directamente ADSL con el ecosistema de conmutación estudiado.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: ADSL - ESTÁNDARES Y VELOCIDADES -->
+      <div class="tab-panel" id="tab-adsl-estandares">
+        <h2>📊 Estándares ADSL y Velocidades de Transmisión</h2>
+        
+        <p>La familia de estándares ADSL ha evolucionado significativamente desde su creación, aumentando progresivamente las velocidades de transmisión. Todos estos estándares son definidos por la <strong>ITU-T</strong> (Unión Internacional de Telecomunicaciones).</p>
+
+        <h3>📋 Tabla Completa de Estándares ADSL</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Estándar ITU</th><th>Nombre Común</th><th>Velocidad de Bajada (Downstream)</th><th>Velocidad de Subida (Upstream)</th><th>Notas</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ITU G.992.1</strong></td>
+                <td>ADSL (G.DMT)</td>
+                <td>8 Mbit/s</td>
+                <td>1.0 Mbit/s</td>
+                <td>Estándar original ADSL. DMT = Discrete Multi-Tone modulation.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.2</strong></td>
+                <td>ADSL Lite (G.Lite)</td>
+                <td>1.5 Mbit/s</td>
+                <td>0.5 Mbit/s</td>
+                <td>Versión simplificada sin splitter. Fácil instalación por el usuario. Menor velocidad.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.3/4</strong></td>
+                <td>ADSL2</td>
+                <td>12 Mbit/s</td>
+                <td>1.0 Mbit/s</td>
+                <td>Mejora significativa en velocidad de bajada. Mayor alcance.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.3/4 Annex J</strong></td>
+                <td>ADSL2</td>
+                <td>12 Mbit/s</td>
+                <td>3.5 Mbit/s</td>
+                <td>Aumenta la velocidad de subida para usuarios que necesitan enviar más datos.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.3/4 Annex L</strong></td>
+                <td>RE-ADSL2</td>
+                <td>5 Mbit/s</td>
+                <td>0.8 Mbit/s</td>
+                <td>RE = Reach Extended (Alcance Extendido). Optimizado para líneas largas (mayor distancia a la central).</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.5</strong></td>
+                <td>ADSL2+</td>
+                <td>24 Mbit/s</td>
+                <td>1.0 Mbit/s</td>
+                <td>Dobla el ancho de banda de frecuencias (2.2 MHz). Estándar más común actualmente.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.5 Annex L</strong></td>
+                <td>RE-ADSL2+</td>
+                <td>24 Mbit/s</td>
+                <td>1.0 Mbit/s</td>
+                <td>Combina velocidades de ADSL2+ con alcance extendido para líneas largas.</td>
+              </tr>
+              <tr>
+                <td><strong>ITU G.992.5 Annex M</strong></td>
+                <td>ADSL2+</td>
+                <td>28 Mbit/s</td>
+                <td>3.5 Mbit/s</td>
+                <td>Máxima velocidad de subida en ADSL. Popular en países que requieren mayor upstream (P2P, videoconferencia).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>📈 Evolución de Velocidades ADSL</h3>
+        <div class="evolution-note">
+          <p>La evolución desde el ADSL original (8/1 Mbps) hasta el ADSL2+ Annex M (28/3.5 Mbps) representa un aumento de <strong>3.5 veces en descarga y 3.5 veces en carga</strong>. Sin embargo, estas velocidades son <strong>teóricas máximas</strong>; en la práctica dependen de:</p>
+          <ul>
+            <li>📏 <strong>Distancia a la central:</strong> A mayor distancia, menor velocidad (atenuación de la señal).</li>
+            <li>🔊 <strong>Ruido en la línea:</strong> Interferencias electromagnéticas reducen la velocidad efectiva.</li>
+            <li>🔌 <strong>Calidad del cableado:</strong> Cables antiguos o en mal estado degradan la señal.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: ADSL - COMPONENTES -->
+      <div class="tab-panel" id="tab-adsl-componentes">
+        <h2>🔌 Componentes de una Conexión ADSL</h2>
+        
+        <p>Una conexión ADSL involucra varios componentes tanto en el lado del usuario como en la central del proveedor. Cada uno cumple una función específica para hacer posible la transmisión de datos sobre la línea telefónica.</p>
+
+        <h3>📦 Componentes del Lado del Usuario (Abonado)</h3>
+        <div class="component-detail">
+          <div class="component">
+            <h4>🖥️ ATU-R (ADSL Terminal Unit - Remote)</h4>
+            <p><strong>Módem ADSL del abonado.</strong> Es el dispositivo que se instala en el hogar o empresa del usuario. Su función es:</p>
+            <ul>
+              <li>📡 <strong>Modular</strong> los datos digitales del ordenador a señales ADSL para transmitir por la línea telefónica.</li>
+              <li>📥 <strong>Demodular</strong> las señales ADSL entrantes para convertirlas en datos digitales que el ordenador entienda.</li>
+              <li>🔌 Conectarse al ordenador vía Ethernet (RJ-45) o USB.</li>
+            </ul>
+            <p><em>Ejemplo: Thomson GT605 (mencionado en el PDF) con 4 puertos Ethernet 10/100Base-T.</em></p>
+          </div>
+
+          <div class="component">
+            <h4>🔀 Splitter (Filtro Separador)</h4>
+            <p><strong>Filtro electrónico</strong> que separa la señal de voz (telefonía analógica o RDSI) de la señal de datos ADSL que viajan por el mismo par de cobre.</p>
+            <ul>
+              <li>📞 <strong>Frecuencias bajas (0-4 kHz):</strong> Las envía al teléfono convencional.</li>
+              <li>🌐 <strong>Frecuencias altas (25 kHz - 1.1 MHz):</strong> Las envía al módem ADSL.</li>
+              <li>🛡️ Evita que las llamadas telefónicas interfieran con la conexión a Internet y viceversa.</li>
+            </ul>
+            <p>Sin el splitter, al levantar el teléfono se podría interrumpir la conexión ADSL.</p>
+          </div>
+
+          <div class="component">
+            <h4>🔀 Switch de Cliente (Opcional)</h4>
+            <p>En implementaciones empresariales, puede existir un switch que distribuya la conexión a múltiples dispositivos.</p>
+            <p><em>Ejemplo del PDF: Alcatel 7250 con 8 puertos Fast Ethernet 10/100Base-T (RJ-45) y 2 puertos Gigabit Ethernet ópticos (1000Base-SX, 850nm) o eléctricos (1000Base-TX). Con redundancia de alimentación pero sin redundancia de procesadora.</em></p>
+          </div>
+        </div>
+
+        <h3>🏢 Componentes del Lado de la Central (Proveedor)</h3>
+        <div class="component-detail">
+          <div class="component">
+            <h4>📡 ATU-C (ADSL Terminal Unit - Central Office)</h4>
+            <p><strong>Módem ADSL de la oficina central.</strong> Es el equipo complementario al ATU-R ubicado en la central telefónica del proveedor de servicios. Realiza las mismas funciones de modulación/demodulación pero en el extremo de la red.</p>
+          </div>
+
+          <div class="component">
+            <h4>🔀 DSLAM (Digital Subscriber Line Access Multiplexer)</h4>
+            <p><strong>Multiplexor de Acceso a Línea de Abonado Digital.</strong> Es el componente clave en la central. Sus funciones son:</p>
+            <ul>
+              <li>🔀 <strong>Concentrar múltiples conexiones ADSL</strong> de usuarios (cientos o miles) en un solo enlace de alta velocidad hacia el núcleo de la red.</li>
+              <li>📊 <strong>Multiplexar</strong> el tráfico de todos los usuarios hacia el backbone del proveedor.</li>
+              <li>🔄 Funciona como el "punto de encuentro" donde convergen todas las líneas ADSL de los abonados de una zona.</li>
+            </ul>
+            <p>El DSLAM separa los datos de los usuarios y los envía hacia Internet, mientras que las llamadas de voz se envían a la red telefónica convencional (PSTN).</p>
+          </div>
+
+          <div class="component">
+            <h4>🌐 BAS (Broadband Access Server)</h4>
+            <p><strong>Servidor de Acceso de Banda Ancha.</strong> Es el dispositivo que:</p>
+            <ul>
+              <li>🔐 <strong>Autentica a los usuarios</strong> (usuario/contraseña PPPoE).</li>
+              <li>📋 <strong>Asigna direcciones IP</strong> a los abonados.</li>
+              <li>📊 <strong>Gestiona las sesiones</strong> de los usuarios y aplica políticas de servicio.</li>
+              <li>🌐 Conecta la red de acceso ADSL con el núcleo de Internet del proveedor.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>🏗️ Arquitectura Completa del Sistema ADSL</h3>
+        <div class="architecture-flow">
+          <p>El flujo completo de una conexión ADSL es:</p>
+          <div class="flow-diagram">
+            <div class="flow-box">💻 PC del Usuario</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🖥️ ATU-R (Módem)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🔀 Splitter</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📞 Línea Telefónica (Par de Cobre)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🔀 Splitter (Central)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📡 DSLAM (Central)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🌐 BAS (Autenticación)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🌍 Internet</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: ADSL - FUNCIONAMIENTO Y ATM -->
+      <div class="tab-panel" id="tab-adsl-funciona">
+        <h2>⚙️ Funcionamiento Técnico y Relación con ATM</h2>
+        
+        <h3>🎵 Modulación DMT (Discrete Multi-Tone)</h3>
+        <div class="card">
+          <p>ADSL utiliza una técnica de modulación llamada <strong>DMT (Discrete Multi-Tone)</strong> que divide el espectro de frecuencias disponible en el par de cobre en <strong>múltiples subcanales</strong> (también llamados "tonos" o "bins"):</p>
+          <ul>
+            <li>📊 El espectro se divide en <strong>256 subcanales</strong> de 4.3125 kHz cada uno.</li>
+            <li>📞 Los subcanales más bajos (0-4 kHz) se reservan para <strong>voz telefónica (POTS)</strong>.</li>
+            <li>📤 Algunos subcanales se usan para <strong>upstream</strong> (subida de datos).</li>
+            <li>📥 La mayoría de los subcanales se usan para <strong>downstream</strong> (bajada de datos).</li>
+            <li>🧠 Cada subcanal se analiza constantemente y se ajusta la cantidad de datos que transporta según la calidad de la señal en esa frecuencia.</li>
+          </ul>
+          <p>Esto hace que ADSL sea muy <strong>robusto frente a interferencias</strong>, ya que si un subcanal tiene ruido, simplemente se usa menos o se desactiva, mientras los demás siguen funcionando.</p>
+        </div>
+
+        <h3>🔗 ATM sobre ADSL: El Nivel de Adaptación</h3>
+        <div class="definition-card">
+          <p>El <strong>Nivel de Adaptación ATM (AAL)</strong> es el que convierte la información desde los niveles superiores a <strong>Celdas ATM</strong>. Es el puente entre los protocolos de red (como IP) y la tecnología de transporte ATM.</p>
+          <p>El estándar para ATM sobre ADSL es <strong>AAL5 (ATM Adaptation Layer 5)</strong>.</p>
+        </div>
+
+        <h3>📦 ¿Por qué AAL5 para ADSL?</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>📦 AAL5: Adaptación para Datos</h4>
+            <p>AAL5 está optimizado para la <strong>transmisión de datos</strong> (como tráfico IP). Es el más eficiente para este propósito, con menos sobrecarga que otros tipos de AAL.</p>
+            <ul>
+              <li>✅ <strong>Simple y eficiente</strong> (baja sobrecarga).</li>
+              <li>✅ Ideal para <strong>tráfico de datos en ráfagas</strong> (Internet).</li>
+              <li>✅ Soporta tramas de hasta <strong>65,535 bytes</strong>.</li>
+              <li>✅ Utiliza <strong>detección de errores</strong> por CRC-32.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>🎯 Proceso de Adaptación AAL5</h4>
+            <ol>
+              <li>📦 Recibe el paquete IP o trama de nivel superior.</li>
+              <li>📏 Lo <strong>segmenta</strong> en fragmentos de 48 bytes (payload de celda ATM).</li>
+              <li>🔢 Añade un <strong>trailer</strong> con información de control y CRC.</li>
+              <li>📤 Entrega los fragmentos a la capa ATM para que los encapsule en celdas y los transmita.</li>
+            </ol>
+          </div>
+        </div>
+
+        <h3>🔄 Flujo Completo de Datos en ADSL</h3>
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="step-number">1</span>
+            <p><strong>Niveles Superiores:</strong> El usuario solicita una página web (protocolo HTTP sobre TCP/IP).</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">2</span>
+            <p><strong>AAL5 (Capa de Adaptación ATM):</strong> Toma los paquetes IP, los segmenta en unidades de 48 bytes y añade información de control.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">3</span>
+            <p><strong>Capa ATM:</strong> Toma cada segmento de 48 bytes, le añade la cabecera ATM de 5 bytes (con VPI/VCI), formando celdas de 53 bytes.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">4</span>
+            <p><strong>Capa Física (ADSL):</strong> Modula las celdas ATM usando DMT sobre el par de cobre. Las transmite a través del bucle local hasta la central.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">5</span>
+            <p><strong>Proceso Inverso en el Destino:</strong> En el DSLAM/BAS, las celdas ATM se reciben, se reensamblan los paquetes IP originales y se enrutan hacia Internet.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: CUADRO COMPARATIVO FINAL -->
+      <div class="tab-panel" id="tab-cuadro">
+        <h2>📊 Cuadro Comparativo Final de Tecnologías de Conmutación</h2>
+        <p>Para cerrar el estudio, presentamos una comparación sistemática de todas las tecnologías de conmutación analizadas en este material de estudio.</p>
+        
+        <h3>🏗️ Comparativa General de Tecnologías</h3>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>Característica</th><th>Conmutación de Circuitos</th><th>X.25</th><th>Frame Relay</th><th>ATM</th><th>SMDS</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Orientación</strong></td>
+                <td>Conexión</td>
+                <td>Conexión</td>
+                <td>Conexión</td>
+                <td>Conexión</td>
+                <td>No conexión</td>
+              </tr>
+              <tr>
+                <td><strong>Tipo de Conmutación</strong></td>
+                <td>Circuitos físicos</td>
+                <td>Paquetes (CV)</td>
+                <td>Paquetes (tramas)</td>
+                <td>Celdas (CV)</td>
+                <td>Celdas (datagrama)</td>
+              </tr>
+              <tr>
+                <td><strong>Unidad de Datos</strong></td>
+                <td>Flujo continuo</td>
+                <td>Paquetes pequeños</td>
+                <td>Tramas variables</td>
+                <td>Celdas fijas (53 B)</td>
+                <td>Celdas fijas (53 B)</td>
+              </tr>
+              <tr>
+                <td><strong>Verificación de Errores</strong></td>
+                <td>No aplica</td>
+                <td>Salto a salto</td>
+                <td>Extremo a extremo</td>
+                <td>Solo cabecera</td>
+                <td>Extremo a extremo</td>
+              </tr>
+              <tr>
+                <td><strong>Velocidad Máxima</strong></td>
+                <td>Limitada por el medio</td>
+                <td>19.2 kbps - 64 kbps</td>
+                <td>2.048 Mbps (E1)</td>
+                <td>10 Gbps (OC-192)</td>
+                <td>SONET (hasta Gbps)</td>
+              </tr>
+              <tr>
+                <td><strong>Uso Principal</strong></td>
+                <td>Voz tradicional</td>
+                <td>Datos (obsoleto)</td>
+                <td>Interconexión LAN</td>
+                <td>Backbone multiservicio</td>
+                <td>MAN (LAN-to-LAN)</td>
+              </tr>
+              <tr>
+                <td><strong>Manejo de Voz/Video</strong></td>
+                <td>Excelente (nativo)</td>
+                <td>Pobre</td>
+                <td>Limitado</td>
+                <td>Excelente (QoS)</td>
+                <td>Limitado</td>
+              </tr>
+              <tr>
+                <td><strong>Compartición de Recursos</strong></td>
+                <td>No (circuito dedicado)</td>
+                <td>Sí (CV multiplexados)</td>
+                <td>Sí (CV multiplexados)</td>
+                <td>Sí (VP/VC)</td>
+                <td>Sí (sin conexión)</td>
+              </tr>
+              <tr>
+                <td><strong>Estado Actual</strong></td>
+                <td>En declive (voz IP)</td>
+                <td>Obsoleto</td>
+                <td>Obsoleto (reemplazado)</td>
+                <td>En uso (backbones)</td>
+                <td>Obsoleto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>📈 Línea de Tiempo y Evolución Tecnológica</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1876</div>
+            <div class="timeline-content">
+              <h4>📞 Telefonía por Conmutación de Circuitos</h4>
+              <p>Alexander Graham Bell patenta el teléfono. La red telefónica se basa en conmutación de circuitos manuales y luego automáticos (centrales electromecánicas).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1970s</div>
+            <div class="timeline-content">
+              <h4>📠 X.25</h4>
+              <p>Primer protocolo de conmutación de paquetes estandarizado. Diseñado para líneas analógicas con alta tasa de error. Robusto pero lento para estándares actuales.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1980s</div>
+            <div class="timeline-content">
+              <h4>🖼️ Frame Relay</h4>
+              <p>Evolución de X.25. Aprovecha las nuevas infraestructuras digitales de baja tasa de error. Más rápido y eficiente al eliminar control de errores en nodos intermedios.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1990s</div>
+            <div class="timeline-content">
+              <h4>⚛️ ATM y SMDS</h4>
+              <p>ATM surge como tecnología de backbone multiservicio (voz, video, datos) con calidad de servicio (QoS). SMDS para interconexión de LANs en áreas metropolitanas. Ambos basados en celdas de 53 bytes.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2000s</div>
+            <div class="timeline-content">
+              <h4>💻 ADSL</h4>
+              <p>Masificación del acceso de banda ancha sobre líneas telefónicas existentes. Utiliza ATM como tecnología de transporte subyacente (AAL5). Gran despliegue a nivel mundial.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Actualidad</div>
+            <div class="timeline-content">
+              <h4>🌐 Convergencia IP</h4>
+              <p>Las redes modernas convergen hacia soluciones todo-IP: fibra óptica (FTTH), MPLS, y tecnologías de acceso de alta velocidad. ATM y Frame Relay persisten en nichos específicos y backbones heredados.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>💡 Conceptos Clave para el Examen</h3>
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>🔀 Multiplexación</h4>
+            <p>Combinar múltiples canales en un solo medio físico. Tipos: TDM (tiempo), FDM (frecuencia), WDM (longitud de onda para fibra), CDM (código).</p>
+          </div>
+          <div class="concept-card">
+            <h4>🔗 Circuito Virtual vs Datagrama</h4>
+            <p>El circuito virtual garantiza orden y sigue una ruta fija. El datagrama es más flexible: cada paquete va por su cuenta y puede llegar por diferentes caminos.</p>
+          </div>
+          <div class="concept-card">
+            <h4>📦 Celda ATM: 53 bytes</h4>
+            <p>Tamaño fijo universal: 5 bytes de cabecera (VPI, VCI, PTI, CLP, HEC) + 48 bytes de carga útil (payload). Balance óptimo entre eficiencia para datos y retardo para voz/video.</p>
+          </div>
+          <div class="concept-card">
+            <h4>⚡ QoS (Calidad de Servicio)</h4>
+            <p>ATM fue pionero en garantizar parámetros de calidad: ancho de banda, retardo, jitter y tasa de pérdida de celdas. Fundamental para tráfico sensible como voz y video.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🌐 ADSL: Asimetría</h4>
+            <p>Downstream (bajada) mucho mayor que upstream (subida). Adaptado al patrón de consumo típico: navegar, descargar, streaming. La velocidad real depende de la distancia a la central.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🔄 Evolución X.25 → Frame Relay → ATM</h4>
+            <p>Cada generación elimina sobrecarga de la anterior. X.25 verifica errores en cada nodo; Frame Relay solo en los extremos; ATM añade calidad de servicio y tamaño de celda fijo para previsibilidad.</p>
+          </div>
+        </div>
+
+        <div class="final-message">
+          <p>📚 Este resumen cubre la totalidad del material de estudio de <strong>Redes de Conmutación</strong>, desde los fundamentos de conmutación de circuitos y paquetes, pasando por las tecnologías clásicas (X.25, Frame Relay), las de backbone (ATM, SMDS), hasta las de acceso (ADSL).</p>
+          <p>¡Mucha suerte en tu examen! 🚀</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
+    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
+    <nav class="footer-nav">
+      <a href="pagina3.html">← Anterior: Frame Relay y X.25</a>
+      <span>Página 4 de 4 (Final)</span>
+      <a href="index.html">Volver al Inicio →</a>
+    </nav>
+  </footer>
+
+  <script src="paginajs.js" defer></script>
+</body>
+</html>
