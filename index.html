@@ -21,12 +21,11 @@
 
   <div class="tabs-container">
     <div class="tabs-nav">
-      <button class="tab-btn active" data-tab="tab-intro">🌐 Introducción</button>
-      <button class="tab-btn" data-tab="tab-crisis">⚠️ Crisis del Software</button>
-      <button class="tab-btn" data-tab="tab-ciclo">🔄 Ciclo de Vida</button>
-      <button class="tab-btn" data-tab="tab-calidad">⭐ Atributos de Calidad</button>
-      <button class="tab-btn" data-tab="tab-analisis">🔍 Análisis Previo</button>
-      <button class="tab-btn" data-tab="tab-requerimientos">📋 Requerimientos</button>
+      <button class="tab-btn active" data-tab="tab-intro">🌐 Introducción a la Conmutación</button>
+      <button class="tab-btn" data-tab="tab-evolucion">📈 Evolución a Telefonía IP</button>
+      <button class="tab-btn" data-tab="tab-circuitos-intro">🔌 Conmutación de Circuitos</button>
+      <button class="tab-btn" data-tab="tab-circuitos-ventajas">✅ Ventajas de Circuitos</button>
+      <button class="tab-btn" data-tab="tab-circuitos-desventajas">❌ Desventajas de Circuitos</button>
     </div>
 
     <div class="tabs-content">
@@ -36,8 +35,7 @@
         <h2>🌐 ¿Qué es la Conmutación en Telecomunicaciones?</h2>
         
         <div class="definition-card">
-          <p><strong>Conmutación</strong> es la conexión que realizan los diferentes nodos que existen en distintos lugares y distancias para lograr un camino apropiado para conectar dos usuarios de una red de telecomunicaciones.</p>
-          <p>La conmutación permite la <strong>descongestión</strong> entre los usuarios de la red, disminuyendo el tráfico y aumentando el ancho de banda disponible.</p>
+          <p><strong>Conmutación</strong> es la conexión que realizan los diferentes nodos que existen en distintos lugares y distancias para lograr un camino apropiado para conectar dos usuarios de una red de telecomunicaciones. La conmutación permite la <strong>descongestión</strong> entre los usuarios de la red, disminuyendo el tráfico y aumentando el ancho de banda disponible.</p>
         </div>
 
         <h3>📚 Conceptos Fundamentales</h3>
@@ -48,273 +46,248 @@
           </div>
           <div class="card">
             <h4>📞 Red de Conmutación de Circuitos</h4>
-            <p>Especializada en el transporte de tráfico de voz tradicional. Ejemplo clásico: la red telefónica pública conmutada (PSTN).</p>
+            <p>Especializada en el transporte de tráfico de voz tradicional. Es el caso de la telefonía convencional. El camino (circuito) entre los extremos se mantiene de forma permanente mientras dura la comunicación.</p>
           </div>
           <div class="card">
             <h4>🌍 Internet como Red de Conmutación</h4>
-            <p>Internet es el ejemplo más grande de red de conmutación de paquetes, donde la información se divide en pequeños bloques que viajan independientemente.</p>
+            <p>Internet es el ejemplo más grande de red de conmutación de paquetes, donde la información se divide en pequeños bloques que viajan independientemente por la red.</p>
           </div>
         </div>
 
-        <h3>🏢 Evolución de la Voz Empresarial hacia Telefonía IP</h3>
-        <p>Las empresas modernas han migrado desde la telefonía tradicional (PSTN) hacia soluciones de <strong>Telefonía IP de extremo a extremo</strong>. Esto implica:</p>
-        <ul>
-          <li>Integración de voz, datos y video sobre una misma infraestructura IP.</li>
-          <li>Uso de teléfonos IP en oficinas locales y remotas.</li>
-          <li>Implementación de centrales telefónicas virtuales (como 3CX en la nube).</li>
-          <li>Reducción de costos al eliminar redes separadas para voz y datos.</li>
-        </ul>
-
+        <h3>🏗️ Las Dos Arquitecturas Básicas</h3>
         <div class="info-box">
-          <p>💡 <strong>Dato clave:</strong> Básicamente, existen dos tipos de arquitecturas de redes de comunicación: <strong>conmutación de circuitos</strong> y <strong>conmutación de paquetes</strong>. Todo el estudio de redes modernas se basa en entender estas dos filosofías.</p>
+          <p>💡 <strong>Dato clave:</strong> Básicamente, existen <strong>dos tipos de arquitecturas de redes de comunicación</strong>: conmutación de circuitos y conmutación de paquetes. Todo el estudio de redes modernas se basa en entender estas dos filosofías y cómo evolucionaron hacia las tecnologías actuales.</p>
+        </div>
+
+        <div class="card-container">
+          <div class="card">
+            <h4>🔌 Conmutación de Circuitos</h4>
+            <p>El camino (llamado "circuito") entre los extremos del proceso de comunicación se mantiene de forma permanente mientras dura la comunicación. Es posible mantener un flujo continuo de información entre dichos extremos. Es el caso de la telefonía convencional.</p>
+          </div>
+          <div class="card">
+            <h4>📦 Conmutación de Paquetes</h4>
+            <p>La información se divide en bloques (paquetes) que se transmiten independientemente. Cada paquete contiene datos y direcciones de origen/destino. Los nodos intermedios almacenan temporalmente los paquetes y los reenvían por la mejor ruta disponible.</p>
+          </div>
+        </div>
+
+        <h3>🌐 Elementos de una Red de Conmutación Moderna</h3>
+        <p>En el contexto actual, las redes de conmutación integran múltiples tecnologías y dispositivos:</p>
+        <div class="network-elements">
+          <ul>
+            <li>🏢 <strong>LAN (Local Area Network):</strong> Redes de área local en oficinas y empresas.</li>
+            <li>🔒 <strong>Private Network:</strong> Redes privadas corporativas.</li>
+            <li>🌍 <strong>Internet:</strong> La red pública global de conmutación de paquetes.</li>
+            <li>📞 <strong>PSTN (Public Switched Telephone Network):</strong> La red telefónica pública conmutada tradicional.</li>
+            <li>📱 <strong>IP Phones:</strong> Teléfonos IP en oficinas locales y remotas.</li>
+            <li>☁️ <strong>Cloud PBX (ej. 3CX):</strong> Centrales telefónicas virtuales en la nube.</li>
+            <li>☎️ <strong>Standard Telephones:</strong> Teléfonos analógicos tradicionales que se integran mediante adaptadores.</li>
+          </ul>
         </div>
       </div>
 
-      <!-- PESTAÑA: CRISIS DEL SOFTWARE Y SURGIMIENTO DE LA INGENIERÍA DE SOFTWARE -->
-      <div class="tab-panel" id="tab-crisis">
-        <h2>⚠️ La Crisis del Software y el Nacimiento de la Ingeniería de Software</h2>
+      <!-- PESTAÑA: EVOLUCIÓN A TELEFONÍA IP -->
+      <div class="tab-panel" id="tab-evolucion">
+        <h2>📈 Evolución de la Voz Empresarial hacia Telefonía IP</h2>
         
         <div class="definition-card">
-          <p>La <strong>crisis del software</strong> surgió porque los proyectos de desarrollo se volvieron extremadamente complejos y los equipos no contaban con metodologías claras para manejarlos. La <strong>Ingeniería de Software</strong> nació como respuesta directa a esta crisis.</p>
+          <p>Las empresas modernas han experimentado una transformación fundamental en sus comunicaciones, migrando desde la telefonía tradicional basada en conmutación de circuitos (PSTN) hacia soluciones de <strong>Telefonía IP de extremo a extremo</strong> con aplicaciones integradas.</p>
         </div>
 
-        <h3>🔴 Manifestaciones de la Crisis del Software</h3>
-        <div class="problem-grid">
-          <div class="problem-item">⏰ Atrasos constantes en los plazos de entrega acordados con el cliente.</div>
-          <div class="problem-item">🐛 Mala calidad en el código fuente, resultando en gran cantidad de errores (bugs).</div>
-          <div class="problem-item">📄 Falta total o parcial de documentación del sistema desarrollado.</div>
-          <div class="problem-item">📅 Ausencia de planificación previa al inicio del desarrollo.</div>
-          <div class="problem-item">👥 Mal trabajo en equipo o funcionamiento deficiente del equipo de desarrollo.</div>
-          <div class="problem-item">💸 Gasto excesivo de tiempo y dinero, superando los presupuestos estimados.</div>
-        </div>
-
-        <div class="objective-box">
-          <h4>🎯 Objetivo de la Ingeniería de Software</h4>
-          <p><strong>Desarrollar software de calidad dentro del presupuesto y tiempo estimados</strong>, atacando directamente las causas que provocaron la crisis del software.</p>
-        </div>
-
-        <h3>💡 Para Recordar</h3>
-        <p>La Ingeniería de Software no es solo programar, es todo el proceso sistemático y disciplinado que abarca desde la concepción de la idea hasta el mantenimiento del producto final, asegurando que se cumplan los atributos de calidad esperados.</p>
-      </div>
-
-      <!-- PESTAÑA: CICLO DE VIDA DEL SOFTWARE -->
-      <div class="tab-panel" id="tab-ciclo">
-        <h2>🔄 Ciclo de Vida del Software</h2>
-        <p>Son las <strong>3 grandes etapas</strong> que describen todo el proceso de creación y mantenimiento de un software, desde su concepción hasta su retiro.</p>
-
-        <div class="lifecycle-container">
-          <div class="lifecycle-stage definicion">
-            <h3>📋 Etapa de Definición (Análisis Previo)</h3>
-            <p>Aquí se <strong>"gesta"</strong> el software. Se plantean las razones para crearlo (inspiración, necesidad, petición del cliente). Se define <strong>qué</strong> se quiere construir en forma de requerimientos.</p>
-            <p>También se conoce como la etapa de <strong>elicitación</strong> (descubrir requerimientos).</p>
-            <h4>Incluye:</h4>
+        <h3>🔄 El Cambio de Paradigma</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>📞 Telefonía Tradicional (PSTN)</h4>
             <ul>
-              <li>📊 Modelo de Negocio</li>
-              <li>🎯 Definición del Problema</li>
-              <li>📋 Requerimientos (RF y RNF)</li>
-              <li>📏 Estimación</li>
-              <li>🔍 Análisis de Factibilidad</li>
-              <li>📅 Planificación</li>
+              <li>Red separada solo para voz.</li>
+              <li>Conmutación de circuitos dedicados.</li>
+              <li>Infraestructura costosa y rígida.</li>
+              <li>Centrales físicas (PBX) en cada oficina.</li>
+              <li>Llamadas de larga distancia con costo elevado.</li>
             </ul>
           </div>
-
-          <div class="lifecycle-stage desarrollo">
-            <h3>⚙️ Etapa de Desarrollo</h3>
-            <p>Etapa destinada a realizar el <strong>desarrollo o implementación</strong> del software mediante metodologías establecidas.</p>
-            <h4>Pasos internos:</h4>
+          <div class="card">
+            <h4>🌐 Telefonía IP Moderna</h4>
             <ul>
-              <li>📝 Análisis detallado</li>
-              <li>💻 Desarrollo y codificación</li>
-              <li>🚀 Implementación</li>
-              <li>🧪 Pruebas (Testing)</li>
-            </ul>
-            <p><strong>Tecnologías utilizadas:</strong> Git/GitHub, Next.js, TailwindCSS, MongoDB (ejemplo del proyecto).</p>
-          </div>
-
-          <div class="lifecycle-stage mantenimiento">
-            <h3>🔧 Etapa de Mantenimiento</h3>
-            <p>La última etapa del ciclo de vida. Busca <strong>prolongar la vida útil</strong> del software recién lanzado.</p>
-            <h4>3 Tipos de Mantenimiento:</h4>
-            <ul>
-              <li><strong>Preventivo:</strong> Corregir errores potenciales antes de que ocurran.</li>
-              <li><strong>Correctivo:</strong> Corrección de errores actuales detectados.</li>
-              <li><strong>Perfectivo:</strong> Agregar nuevas funcionalidades solicitadas por el cliente.</li>
+              <li>Voz, datos y video sobre la misma red IP.</li>
+              <li>Conmutación de paquetes (VoIP).</li>
+              <li>Aprovecha la infraestructura de Internet existente.</li>
+              <li>Centrales virtuales en la nube (Cloud PBX).</li>
+              <li>Llamadas de larga distancia a costo mínimo o cero.</li>
             </ul>
           </div>
         </div>
-      </div>
 
-      <!-- PESTAÑA: ATRIBUTOS DE CALIDAD DEL SOFTWARE -->
-      <div class="tab-panel" id="tab-calidad">
-        <h2>⭐ Atributos de Calidad del Software</h2>
-        <p>Aspectos indispensables para considerar que un software funcional es de <strong>calidad</strong>. No todos tienen que estar presentes obligatoriamente (por ejemplo, la seguridad no siempre aplica en todos los contextos).</p>
-
-        <div class="quality-grid">
-          <div class="quality-card">
-            <h3>01 Correctitud</h3>
-            <p>El programa debe hacer <strong>correctamente</strong> lo que debería hacer, sin errores de lógica. Es el atributo más fundamental.</p>
+        <h3>🏢 Componentes de una Solución de Telefonía IP Empresarial</h3>
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="step-number">1</span>
+            <p><strong>IP Phones in Office:</strong> Teléfonos IP en la oficina principal que se conectan directamente a la red de datos.</p>
           </div>
-          <div class="quality-card">
-            <h3>02 Usabilidad</h3>
-            <p>Debe ser <strong>fácil de usar</strong> para los usuarios finales. La interfaz debe ser intuitiva y amigable.</p>
+          <div class="process-step">
+            <span class="step-number">2</span>
+            <p><strong>IP Phones in Remote Office:</strong> Teléfonos IP en oficinas remotas que se conectan a través de Internet a la central principal.</p>
           </div>
-          <div class="quality-card">
-            <h3>03 Seguridad</h3>
-            <p>No siempre obligatoria, pero <strong>necesaria en sistemas con datos sensibles</strong> como banca, salud o información personal.</p>
+          <div class="process-step">
+            <span class="step-number">3</span>
+            <p><strong>3CX on Cloud (o similar):</strong> Centralita telefónica virtual alojada en la nube que gestiona todas las llamadas, extensiones, buzones de voz, etc.</p>
           </div>
-          <div class="quality-card">
-            <h3>04 Mantenibilidad</h3>
-            <p>El código debe ser <strong>fácil de modificar, corregir y extender</strong> en el futuro sin introducir nuevos errores.</p>
+          <div class="process-step">
+            <span class="step-number">4</span>
+            <p><strong>Integración con PSTN y Standard Telephones:</strong> Mediante gateways y adaptadores, los teléfonos analógicos tradicionales y las líneas PSTN se integran al sistema VoIP.</p>
           </div>
-          <div class="quality-card">
-            <h3>05 Confiabilidad</h3>
-            <p>El sistema debe funcionar <strong>consistentemente sin fallar</strong> cuando se le necesita, en cualquier circunstancia.</p>
-          </div>
-          <div class="quality-card">
-            <h3>06 UX / User Experience</h3>
-            <p>Diseño de interfaces e interacción para <strong>maximizar la usabilidad</strong> del sistema y la satisfacción del usuario.</p>
+          <div class="process-step">
+            <span class="step-number">5</span>
+            <p><strong>Aplicaciones Unificadas:</strong> La telefonía se integra con el correo electrónico, mensajería instantánea, videoconferencia y CRM, todo sobre la misma plataforma IP.</p>
           </div>
         </div>
-      </div>
 
-      <!-- PESTAÑA: ANÁLISIS PREVIO (ARTEFACTOS) -->
-      <div class="tab-panel" id="tab-analisis">
-        <h2>🔍 Análisis Previo (Artefactos)</h2>
-        
-        <h3>📊 Modelo de Negocio</h3>
-        <div class="card">
-          <p><strong>Diagnóstico de la situación actual.</strong> Es el primer punto de partida de cualquier proyecto de software.</p>
+        <h3>💡 Ventajas de la Migración a Telefonía IP</h3>
+        <div class="advantages-list">
           <ul>
-            <li>Se analiza el entorno actual y se visualiza el potencial producto.</li>
-            <li><strong>No se debe intervenir el sistema actual todavía</strong>, solo observar y describir la forma de trabajo.</li>
+            <li>💰 <strong>Reducción de costos:</strong> Elimina la necesidad de mantener dos redes separadas (voz y datos).</li>
+            <li>🌍 <strong>Movilidad:</strong> Los empleados pueden usar su extensión desde cualquier lugar con conexión a Internet.</li>
+            <li>📊 <strong>Escalabilidad:</strong> Agregar nuevas extensiones es simple y no requiere cableado adicional.</li>
+            <li>🔧 <strong>Funcionalidades avanzadas:</strong> Videollamadas, conferencias, integración con aplicaciones empresariales.</li>
+            <li>🔄 <strong>Flexibilidad:</strong> La red se adapta dinámicamente a las necesidades cambiantes de la empresa.</li>
           </ul>
-          <div class="tip-box">
-            <p>🔑 <strong>Clave:</strong> Observar cómo trabajan los usuarios antes de proponer soluciones tecnológicas.</p>
-          </div>
-        </div>
-
-        <h3>🎯 Definición del Problema</h3>
-        <div class="card">
-          <p>Saber <strong>identificar, describir y entender</strong> el problema o las dificultades a afrontar.</p>
-          <ul>
-            <li>Se usan técnicas como el <strong>Customer Pain</strong> (molestias del cliente).</li>
-            <li>Cada problema identificado debe ser <strong>específico y atómico</strong>.</li>
-          </ul>
-          <div class="example-box">
-            <p>📌 <strong>Ejemplo en Moodle:</strong> "Falta de auto-corrección ortográfica" → problema puntual con posibles soluciones concretas.</p>
-          </div>
-        </div>
-
-        <h3>📋 Requerimientos</h3>
-        <div class="card">
-          <p>Modelar y plasmar las posibles características o formas de <strong>solucionar el problema</strong> con el sistema.</p>
-          <p>Se describen las funcionalidades o características que el programa tendrá que proveer.</p>
-          <div class="result-box">
-            <p>📄 <strong>Resultado:</strong> Documento de Especificación de Requerimientos (Backlog).</p>
-          </div>
-        </div>
-
-        <h3>🔎 Técnicas de Recolección de Información</h3>
-        <div class="techniques-grid">
-          <div class="technique">👀 <strong>Observación:</strong> Ir al lugar y ver cómo trabajan los usuarios en su entorno natural.</div>
-          <div class="technique">🎤 <strong>Entrevistas:</strong> Pueden ser dirigidas (estructuradas) o no dirigidas (abiertas).</div>
-          <div class="technique">📝 <strong>Cuestionarios:</strong> Más casual y permite llegar a más personas simultáneamente.</div>
-          <div class="technique">🔬 <strong>Sistemas similares:</strong> Analizar productos paralelos como referencia de funcionalidades.</div>
-        </div>
-        <div class="reminder-box">
-          <p>⚠️ <strong>Recuerda:</strong> Hay que identificar tanto <strong>usuarios directos</strong> (los que usan el sistema) como <strong>usuarios indirectos</strong> (los que reciben los resultados del sistema).</p>
-        </div>
-
-        <h3>⚠️ Técnica Especial: "Dar la Vuelta al Calcetín"</h3>
-        <div class="special-technique">
-          <p>Consiste en preguntarse: <strong>¿Qué puede ir mal?</strong></p>
-          <ol>
-            <li>Hacer un listado de todo lo que podría resultar mal.</li>
-            <li>Identificar soluciones o acciones de prevención para cada posible problema.</li>
-            <li>Plantear términos y condiciones de seguridad basados en esos riesgos.</li>
-          </ol>
-          <p>Con esa lista de problemas + soluciones, <strong>ya se está haciendo ingeniería de requerimientos</strong>.</p>
         </div>
       </div>
 
-      <!-- PESTAÑA: REQUERIMIENTOS FUNCIONALES Y NO FUNCIONALES -->
-      <div class="tab-panel" id="tab-requerimientos">
-        <h2>📋 Requerimientos: Funcionales (RF) y No Funcionales (RNF)</h2>
+      <!-- PESTAÑA: CONMUTACIÓN DE CIRCUITOS - INTRODUCCIÓN -->
+      <div class="tab-panel" id="tab-circuitos-intro">
+        <h2>🔌 Conmutación de Circuitos: Funcionamiento</h2>
         
-        <h3>🔑 Diferencia Conceptual Clave</h3>
-        <div class="concept-grid">
-          <div class="concept">
-            <h4>Feature (Característica)</h4>
-            <p>Es lo que <strong>TIENE</strong> el sistema. Una propiedad o capacidad inherente del software.</p>
+        <div class="definition-card">
+          <p>En la <strong>conmutación de circuitos</strong>, el camino (llamado "circuito") entre los extremos del proceso de comunicación se mantiene de forma permanente mientras dura la comunicación, de forma que es posible mantener un flujo continuo de información entre dichos extremos. Este es el caso de la telefonía convencional.</p>
+        </div>
+
+        <h3>📋 Características Fundamentales</h3>
+        <div class="card-container">
+          <div class="card">
+            <h4>🔗 Circuito Dedicado</h4>
+            <p>Se establece un <strong>circuito físico dedicado</strong> y exclusivo entre los dos extremos que desean comunicarse. Este circuito permanece reservado durante toda la sesión, independientemente de si se está transmitiendo información o no.</p>
           </div>
-          <div class="concept">
-            <h4>Requerimiento</h4>
-            <p>Característica o restricción del <strong>sistema propuesto</strong>. Lo que el sistema DEBE hacer o CÓMO debe ser.</p>
+          <div class="card">
+            <h4>📞 Flujo Continuo</h4>
+            <p>Una vez establecido el circuito, la información fluye de manera <strong>continua y en tiempo real</strong> desde el origen hasta el destino, sin interrupciones ni necesidad de procesamiento adicional en los nodos intermedios.</p>
+          </div>
+          <div class="card">
+            <h4>🚫 Sin Compartición</h4>
+            <p>Los recursos del circuito (ancho de banda, tiempo de uso) son de uso <strong>exclusivo</strong> para esa comunicación. Ningún otro usuario puede utilizar ese circuito mientras la sesión está activa, incluso si hay silencios en la conversación.</p>
           </div>
         </div>
-        <p>El <strong>sistema actual</strong> es el CONTEXTO; el <strong>sistema propuesto</strong> es la SOLUCIÓN.</p>
 
-        <h3>✅ Requerimientos Funcionales (RF)</h3>
-        <div class="rf-box">
-          <p>Identificadores o descriptores de <strong>funcionalidades y servicios</strong> del sistema. Se refieren a <strong>acciones disponibles para el usuario</strong>.</p>
-          <p><strong>Se escriben como un verbo</strong> (acción del sistema), generalmente en forma imperativa.</p>
-          <div class="example-inline">
-            <p>📌 <strong>Ejemplos en Word:</strong></p>
+        <h3>🔄 El Proceso de una Comunicación por Circuitos</h3>
+        <div class="process-flow">
+          <div class="process-step">
+            <span class="step-number">1</span>
+            <p><strong>Establecimiento del Circuito:</strong> Antes de transmitir datos, los nodos de la red establecen un camino físico dedicado desde el origen hasta el destino. Durante esta fase se reservan los recursos necesarios en cada nodo intermedio. Este proceso introduce un retraso inicial significativo.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">2</span>
+            <p><strong>Transferencia de Datos:</strong> Una vez establecido el circuito, la información fluye de manera continua. Los nodos intermedios no necesitan tomar decisiones de enrutamiento ni procesar cabeceras; simplemente dejan pasar la señal por el camino preestablecido.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-number">3</span>
+            <p><strong>Liberación del Circuito:</strong> Al finalizar la comunicación, los nodos liberan los recursos reservados para ese circuito. Estos recursos quedan disponibles para ser utilizados por otras comunicaciones.</p>
+          </div>
+        </div>
+
+        <div class="comparison-note">
+          <p>📌 <strong>Analogía:</strong> La conmutación de circuitos funciona como un tren en una vía exclusiva. La vía se construye antes de que el tren salga, durante el viaje ningún otro tren puede usar esa vía, y al llegar a destino la vía se desmantela o queda libre para otro tren.</p>
+        </div>
+      </div>
+
+      <!-- PESTAÑA: VENTAJAS DE CONMUTACIÓN DE CIRCUITOS -->
+      <div class="tab-panel" id="tab-circuitos-ventajas">
+        <h2>✅ Ventajas de la Conmutación de Circuitos</h2>
+        
+        <div class="advantage-detail-list">
+          <div class="advantage-detail">
+            <h3>🎥 Transmisión en Tiempo Real</h3>
+            <p>La transmisión se realiza en <strong>tiempo real</strong>, siendo especialmente adecuado para comunicación de <strong>voz y video</strong>. Como el circuito está dedicado exclusivamente a esa comunicación, no hay retrasos variables ni fluctuaciones en la calidad de la señal. La información llega al destino con un retardo constante y predecible, lo cual es crítico para aplicaciones interactivas como una conversación telefónica.</p>
+          </div>
+
+          <div class="advantage-detail">
+            <h3>🔒 Acaparamiento de Recursos (Ventaja en este contexto)</h3>
+            <p>Los nodos que intervienen en la comunicación <strong>disponen en exclusiva del circuito establecido</strong> mientras dura la sesión. Esto garantiza que:</p>
             <ul>
-              <li><strong>RF1:</strong> Imprimir Documento</li>
-              <li><strong>RF2:</strong> Insertar Imagen</li>
-              <li><strong>RF3:</strong> Guardar Archivo</li>
+              <li>✅ Todo el ancho de banda del circuito está disponible para esa comunicación.</li>
+              <li>✅ No hay interferencias de otros usuarios.</li>
+              <li>✅ La calidad del servicio es constante y garantizada durante toda la sesión.</li>
             </ul>
           </div>
-        </div>
 
-        <h3>🚫 Requerimientos No Funcionales (RNF)</h3>
-        <div class="rnf-box">
-          <p>Identifican <strong>restricciones</strong> sobre el sistema propuesto. Se definen desde la <strong>perspectiva de calidad</strong> (usuario, contexto, etc.).</p>
-          <p><strong>Se escriben como descripciones más completas</strong>, no como simples verbos.</p>
-          <div class="example-inline">
-            <p>📌 <strong>Ejemplo en Word:</strong></p>
-            <p><strong>RNF1:</strong> El editor deberá realizar una corrección automática de ortografía mientras el usuario escribe.</p>
+          <div class="advantage-detail">
+            <h3>🚫 No Hay Contención</h3>
+            <p>Una vez que se ha establecido el circuito, las partes pueden comunicarse a la <strong>máxima velocidad que permita el medio</strong>, sin compartir el ancho de banda ni el tiempo de uso con otros usuarios. A diferencia de la conmutación de paquetes, no hay colas de espera ni competencia por recursos en los nodos intermedios.</p>
           </div>
-        </div>
 
-        <h3>✅ Todo Requerimiento Debe Ser:</h3>
-        <div class="requirement-properties">
-          <div class="property">
-            <span class="badge blue">Claro</span>
-            <p>No ambiguo. Debe decir <strong>exactamente</strong> qué es lo que se quiere. Es lo que lo distingue de un atributo de calidad.</p>
+          <div class="advantage-detail">
+            <h3>🗺️ El Circuito es Fijo (Simplicidad de Enrutamiento)</h3>
+            <p>Dado que se dedica un <strong>circuito físico específicamente para esa sesión de comunicación</strong>, una vez establecido el circuito no hay pérdidas de tiempo calculando y tomando decisiones de encaminamiento en los nodos intermedios. Cada nodo intermedio tiene <strong>una sola ruta</strong> para los paquetes entrantes y salientes que pertenecen a una sesión específica.</p>
           </div>
-          <div class="property">
-            <span class="badge green">Completo</span>
-            <p>Debe tener descripciones <strong>sólidas y fuertes</strong> — no pueden faltar detalles importantes para su implementación.</p>
-          </div>
-          <div class="property">
-            <span class="badge yellow">Realizable</span>
-            <p>Los requerimientos deben <strong>poder hacerse eventualmente</strong> — no deben ser imposibles de implementar con la tecnología disponible.</p>
+
+          <div class="advantage-detail">
+            <h3>🔧 Simplicidad en la Gestión de Nodos Intermedios</h3>
+            <p>Una vez que se ha establecido el circuito físico, <strong>no hay que tomar más decisiones</strong> para encaminar los datos entre el origen y el destino. Los nodos simplemente conmutan la señal entrante a la salida correspondiente según el circuito establecido. Esto simplifica enormemente el hardware y software de los nodos de conmutación.</p>
           </div>
         </div>
+      </div>
 
-        <h3>🌐 Dimensiones de los RNF (Perspectivas de Calidad)</h3>
-        <div class="dimensions-grid">
-          <div class="dimension">
-            <h4>🌍 Contexto</h4>
-            <p>¿Qué está haciendo el usuario con el programa? Cómo se pueden implementar funcionalidades en 2do plano para facilitar el uso. Ej: autocompletado en un editor.</p>
+      <!-- PESTAÑA: DESVENTAJAS DE CONMUTACIÓN DE CIRCUITOS -->
+      <div class="tab-panel" id="tab-circuitos-desventajas">
+        <h2>❌ Desventajas de la Conmutación de Circuitos</h2>
+        
+        <div class="disadvantage-detail-list">
+          <div class="disadvantage-detail">
+            <h3>⏰ Retraso en el Inicio de la Comunicación</h3>
+            <p>Se necesita un <strong>tiempo significativo para realizar la conexión</strong>, lo que conlleva un retraso en la transmisión de la información. Antes de que el primer bit de datos pueda ser enviado, todos los nodos intermedios deben establecer y confirmar el circuito. En llamadas de larga distancia internacional, este proceso puede tomar varios segundos.</p>
           </div>
-          <div class="dimension">
-            <h4>👤 Cliente</h4>
-            <p>Visión del cliente — qué busca con el desarrollo de ese sistema, respetando todo lo que desea obtener.</p>
+
+          <div class="disadvantage-detail">
+            <h3>💸 Acaparamiento de Recursos (Desventaja)</h3>
+            <p><strong>No se aprovecha el circuito en los instantes de tiempo en que no hay transmisión</strong> entre las partes. Se desperdicia ancho de banda mientras las partes no están comunicándose. En una conversación telefónica típica:</p>
+            <ul>
+              <li>🤫 Una persona habla aproximadamente el 40-50% del tiempo.</li>
+              <li>🔇 El resto del tiempo hay silencios entre palabras, pausas o momentos de escucha.</li>
+              <li>📉 Durante esos silencios, el circuito dedicado está inactivo pero sigue reservado, desperdiciando capacidad.</li>
+            </ul>
           </div>
-          <div class="dimension">
-            <h4>💎 Calidad</h4>
-            <p>Consideración de los atributos de calidad: seguridad, correctitud, mantenibilidad, confiabilidad, etc.</p>
+
+          <div class="disadvantage-detail">
+            <h3>⚠️ Poco Tolerante a Fallos</h3>
+            <p>Si un <strong>nodo intermedio falla</strong>, <strong>todo el circuito se viene abajo</strong>. No hay rutas alternativas automáticas como en la conmutación de paquetes. Las consecuencias son:</p>
+            <ul>
+              <li>📴 La comunicación se interrumpe abruptamente.</li>
+              <li>🔄 Hay que <strong>volver a establecer conexiones desde el principio</strong> (fase de establecimiento completa).</li>
+              <li>⏳ Esto implica un nuevo retraso significativo hasta que se restablece la comunicación.</li>
+              <li>💔 No hay mecanismos de recuperación automática durante la transmisión.</li>
+            </ul>
           </div>
-          <div class="dimension">
-            <h4>🖥️ Usabilidad</h4>
-            <p>Diseño del propio sistema: colores, tipografía, tamaño de botones, tamaño de letra, disposición de elementos, etc.</p>
+
+          <div class="disadvantage-detail">
+            <h3>🗺️ El Circuito es Fijo (Inflexibilidad)</h3>
+            <p><strong>No se reajusta la ruta de comunicación</strong>, adaptándola en cada posible instante al camino de menor costo entre los nodos. Una vez que se ha establecido el circuito, no se aprovechan los posibles <strong>caminos alternativos con menor coste</strong> que puedan surgir durante la sesión. Si durante la comunicación aparece una ruta más eficiente o menos congestionada, el circuito original no se modifica.</p>
           </div>
-          <div class="dimension">
-            <h4>🔧 Hardware/Software</h4>
-            <p>Especificaciones de equipos usados y tecnologías de desarrollo de software requeridas para el funcionamiento.</p>
+
+          <div class="disadvantage-detail">
+            <h3>📊 Comparativa con Conmutación de Paquetes</h3>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr><th>Aspecto</th><th>Conmutación de Circuitos</th><th>Conmutación de Paquetes</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Establecimiento de conexión</strong></td><td>Sí, obligatorio antes de transmitir</td><td>No siempre (solo en circuito virtual)</td></tr>
+                  <tr><td><strong>Compartición de recursos</strong></td><td>No (circuito dedicado)</td><td>Sí (múltiples usuarios comparten)</td></tr>
+                  <tr><td><strong>Tolerancia a fallos</strong></td><td>Baja (se cae todo el circuito)</td><td>Alta (rutas alternativas dinámicas)</td></tr>
+                  <tr><td><strong>Uso eficiente del ancho de banda</strong></td><td>Bajo (desperdicio en silencios)</td><td>Alto (solo se usa al transmitir)</td></tr>
+                  <tr><td><strong>Calidad de servicio para voz</strong></td><td>Excelente (flujo constante)</td><td>Variable (requiere QoS adicional)</td></tr>
+                  <tr><td><strong>Flexibilidad de enrutamiento</strong></td><td>Nula (ruta fija)</td><td>Alta (adaptación dinámica)</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -323,11 +296,11 @@
   </div>
 
   <footer>
-    <p>📚 Resumen creado con IA · Basado en los apuntes de Ingeniería de Software</p>
-    <p class="tagline">"Esfuérzate y sé valiente" 💪</p>
+    <p>📚 Resumen creado con IA · Basado en los apuntes de Redes de Conmutación</p>
+    <p class="tagline">"Conectando el conocimiento, un nodo a la vez" 🚀</p>
     <nav class="footer-nav">
-      <span>Página 1 de 3</span>
-      <a href="pagina2.html">Siguiente: Scrum y Planificación →</a>
+      <span>Página 1 de 4</span>
+      <a href="pagina2.html">Siguiente: Conmutación de Paquetes y ATM →</a>
     </nav>
   </footer>
 
